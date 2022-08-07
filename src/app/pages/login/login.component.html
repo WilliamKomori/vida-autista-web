@@ -9,33 +9,32 @@
                                 <div class="text-center mb-3">
                                     <a [routerLink]="['/admin/index']"><img src="assets/images/logo-full.png" alt=""></a>
                                 </div>
-                                <h4 class="text-center mb-4">Sign in your account</h4>
                                 <form action="['/admin/index']">
                                     <div class="form-group">
-                                        <label class="mb-1"><strong>Email</strong></label>
-                                        <input type="email" class="form-control" value="hello@example.com">
+                                        <label class="mb-1"><strong>E-mail</strong></label>
+                                        <input type="email" class="form-control" value="Digite seu e-mail">
                                     </div>
                                     <div class="form-group">
-                                        <label class="mb-1"><strong>Password</strong></label>
-                                        <input type="password" class="form-control" value="Password">
+                                        <label class="mb-1"><strong>Senha</strong></label>
+                                        <input type="password" class="form-control" value="Senha">
                                     </div>
                                     <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                         <div class="form-group">
                                            <div class="custom-control custom-checkbox ml-1">
                                                 <input type="checkbox" class="custom-control-input" id="basic_checkbox_1">
-                                                <label class="custom-control-label" for="basic_checkbox_1">Remember my preference</label>
+                                                <label class="custom-control-label" for="basic_checkbox_1">Lembrar minha senha</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <a [routerLink]="['/page-forgot-password']">Forgot Password?</a>
+                                            <a [routerLink]="['/page-forgot-password']">Esqueci minha senha</a>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                        <button type="submit" [routerLink]="['/admin/index']" class="btn btn-primary btn-block">Entrar</button>
                                     </div>
                                 </form>
                                 <div class="new-account mt-3">
-                                    <p>Don't have an account? <a class="text-primary" [routerLink]="['/page-register']">Sign up</a></p>
+                                    <p>Não tem uma conta? <a class="text-primary" [routerLink]="['/page-register']">Cadastre-se</a></p>
                                 </div>
                             </div>
                         </div>
