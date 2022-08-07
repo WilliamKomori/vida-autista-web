@@ -1,0 +1,20 @@
+[debug] [2022-08-07T16:11:28.017Z] ----------------------------------------------------------------------
+[debug] [2022-08-07T16:11:28.019Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Tatoow\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-08-07T16:11:28.019Z] CLI Version:   11.4.2
+[debug] [2022-08-07T16:11:28.019Z] Platform:      win32
+[debug] [2022-08-07T16:11:28.019Z] Node Version:  v18.7.0
+[debug] [2022-08-07T16:11:28.020Z] Time:          Sun Aug 07 2022 13:11:28 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2022-08-07T16:11:28.020Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-07T16:11:28.077Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-07T16:11:28.077Z] > authorizing via signed-in user (tatoow@gmail.com)
+[debug] [2022-08-07T16:11:28.077Z] [iam] checking project vida-autista for permissions ["cloudconfig.configs.get","cloudconfig.configs.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2022-08-07T16:11:28.079Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/vida-autista:testIamPermissions [none]
+[debug] [2022-08-07T16:11:28.080Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/vida-autista:testIamPermissions x-goog-quota-user=projects/vida-autista
+[debug] [2022-08-07T16:11:28.080Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vida-autista:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2022-08-07T16:11:29.044Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/vida-autista:testIamPermissions 200
+[debug] [2022-08-07T16:11:29.044Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/vida-autista:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2022-08-07T16:11:29.045Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vida-autista [none]
+[debug] [2022-08-07T16:11:29.511Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/vida-autista 200
+[debug] [2022-08-07T16:11:29.511Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/vida-autista {"projectId":"vida-autista","projectNumber":"122764131945","displayName":"Vida Autista","name":"projects/vida-autista","resources":{"hostingSite":"vida-autista","realtimeDatabaseInstance":"vida-autista-default-rtdb","storageBucket":"vida-autista.appspot.com","locationId":"southamerica-east1"},"state":"ACTIVE","etag":"1_f6fe2b84-bb77-48e2-b1cc-fdf30233817f"}
+[debug] [2022-08-07T16:11:29.512Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/vida-autista [none]
