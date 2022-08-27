@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,9 @@ export class HeaderComponent implements OnInit {
 	toggleChat: boolean = true;
 	toggleSingle: boolean = true;
 	
-	constructor() { }
+	constructor(
+		public authService: AuthService
+	) { }
 	
 	ngOnInit(): void {
 	}

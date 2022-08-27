@@ -683,10 +683,12 @@
                     </li>
                     <li class="nav-item dropdown header-profile dropdown-no-icon" ngbDropdown>
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" ngbDropdownToggle>
-                            <img src="assets/images/profile/pic1.jpg" width="20" alt=""/>
-                            <div class="header-info">
-                                <span>Johndoe</span>
-                                <small>Super Admin</small>
+                            <div class="row" *ngIf="authService.userData as user">
+                                <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : 'assets/images/profile/pic1.jpg'}}" alt="{{user.displayName}}">
+                                <div class="header-info">
+                                    <span>{{user.displayName}}</span>
+                                    <small>{{user.email}}</small>
+                                </div>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>

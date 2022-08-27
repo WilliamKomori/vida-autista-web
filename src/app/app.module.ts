@@ -155,6 +155,17 @@ import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 import { Error503Component } from './pages/error503/error503.component';
 
+// Firebase services + environment module
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { AuthService } from './shared/services/auth.service';
+
+
+
 
 
 @NgModule({
@@ -168,7 +179,7 @@ import { Error503Component } from './pages/error503/error503.component';
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    
+
     Index1Component,
     Graph1Component,
     Graph2Component,
@@ -257,6 +268,13 @@ import { Error503Component } from './pages/error503/error503.component';
     PerfectScrollbarModule,
     NgxDropzoneModule,
     CarouselModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+     
     
     MatListModule,
     MatAutocompleteModule,
@@ -297,7 +315,8 @@ import { Error503Component } from './pages/error503/error503.component';
     MatTreeModule,
   ],
   providers: [
-		SharedService  
+		SharedService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

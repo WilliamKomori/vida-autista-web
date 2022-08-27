@@ -22,12 +22,13 @@ import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 import { Error503Component } from './pages/error503/error503.component';
 
-
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
                 {path: '', redirectTo: 'page-login', pathMatch: 'full' },
 				{
-                    path: 'admin', component: AdminComponent, children: [
+                    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], 
+                      children: [
                         {path: '', component: Index1Component},
                         {path: 'index', component: Index1Component},
                         {path: 'index-1', component: Index1Component},
