@@ -17,15 +17,25 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="hello@example.com">
+                                            <input type="email" class="form-control" placeholder="hello@example.com" #userEmail required>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" class="form-control" value="Password" #userPwd required>
                                         </div>
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                            <button type="submit" class="btn btn-primary btn-block"  (click)="authService.SignUp(userEmail.value, userPwd.value)">Sign me up</button>
                                         </div>
+                                        <div class="formGroup">
+                                            <button
+                                              type="button"
+                                              class="btn googleBtn"
+                                              (click)="authService.GoogleAuth()"
+                                            >
+                                              <i class="fab fa-google-plus-g"></i>
+                                              Continue with Google
+                                            </button>
+                                          </div>
                                     </form>
                                     <div class="new-account mt-3">
                                         <p>Already have an account? <a class="text-primary" [routerLink]="['/page-login']">Sign in</a></p>

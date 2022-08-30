@@ -37,7 +37,6 @@ const routes: Routes = [
                         {path: 'transactions', component: TransactionsComponent},
                         {path: 'portofolio', component: PortofolioComponent},
                         {path: 'market-capital', component: MarketCapitalComponent},
-                        
                         {path: 'app-profile', component: ProfileComponent},
                         {path: 'app-calender', component: CalenderComponent},
                     ]

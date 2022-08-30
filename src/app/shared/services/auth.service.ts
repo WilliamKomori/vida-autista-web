@@ -54,8 +54,11 @@ export class AuthService {
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
+        //this.SendVerificationMail();
+        if (result.user) {
+          this.SetUserData(result.user);
+          this.router.navigate(['/admin']);
+        }
       })
       .catch((error) => {
         window.alert(error.message);
@@ -66,7 +69,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['/admin']);
       });
   }
   // Reset Forggot password
@@ -83,7 +86,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null ? true : false;
   }
   // Sign in with Google
   GoogleAuth() {
