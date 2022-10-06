@@ -1,0 +1,12 @@
+<main id="main" class="main">
+    <section class="section">
+        <div *ngIf=" _jornadas == null"> 
+            <div *ngFor="let item of jornadas">
+                    <div>{{item.idFase}}</div>
+                    <div>{{item.textoFase}}</div>
+                    <div>{{item.faseFinalizada}}</div>
+            </div>
+
+        </div>
+    </section>
+</main>

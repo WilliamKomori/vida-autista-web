@@ -40,6 +40,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { TooltipsComponent } from './components/tooltips/tooltips.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
+import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
     TabsComponent,
     TooltipsComponent,
     CalendarioComponent,
-    MeuPerfilComponent
+    MeuPerfilComponent,
+    JornadaAcompanhamentoComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

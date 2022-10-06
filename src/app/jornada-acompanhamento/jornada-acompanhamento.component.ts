@@ -3,25 +3,30 @@ import { Globals } from '../model/Globals';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
 import { UsuarioService } from '../service/usuario.service';
+import { JornadaService } from '../service/jornada.service';
+import { Jornada } from '../model/Jornada';
 
 @Component({
-  selector: 'app-jornada',
-  templateUrl: './jornada.component.html',
-  styleUrls: ['./jornada.component.scss'],
+  selector: 'app-jornada-acompanhamento',
+  templateUrl: './jornada-acompanhamento.component.html',
+  styleUrls: ['./jornada-acompanhamento.component.scss'],
   providers: [Globals]
 })
-export class JornadaComponent implements OnInit {
+export class JornadaAcompanhamentoComponent implements OnInit {
 
   now = new Date();
   usuario!: Usuario;
+  _jornadas!: Jornada[];
+  jornadas!: Jornada[];
   currentUser! : string;
 
-  constructor(public router: Router, public srv: UsuarioService) { }
+
+  constructor(public router: Router, public srv: UsuarioService, public jsrv: JornadaService) { }
 
   ngOnInit() {
 
     if(localStorage.getItem("MyToken")){
-        
+
       this.currentUser = localStorage.getItem("MyToken")!;
 
       this.srv.buscarInfo(this.currentUser).subscribe(
@@ -31,6 +36,7 @@ export class JornadaComponent implements OnInit {
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
+              this.listarJornada(3);
         },   
       err => {
         console.log(err);
@@ -45,6 +51,9 @@ export class JornadaComponent implements OnInit {
 
   }
 
-
+  listarJornada(id: number){
+    this._jornadas == null;
+    this.jsrv.getJornadaByIdUser(id).subscribe((res: any) => this.jornadas = res);
+  }
 
 }

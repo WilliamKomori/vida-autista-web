@@ -4,6 +4,7 @@ import { ContatoComponent } from './contato/contato.component';
 import { FaqComponent } from './faq/faq.component';
 import { RouterModule, Routes } from '@angular/router';
 import { JornadaComponent } from './jornada/jornada.component';
+import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
 { path: 'contato', component: ContatoComponent},
 { path: 'faq', component: FaqComponent},
 { path: 'jornada', component: JornadaComponent},
+{ path: 'jornada-acompanhamento', component: JornadaAcompanhamentoComponent},
 { path: 'dashboard', component: DashboardComponent},
 { path: 'calendario', component: CalendarioComponent},
 { path: 'meu-perfil', component: MeuPerfilComponent},
