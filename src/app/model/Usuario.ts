@@ -1,3 +1,5 @@
+import { Jornada } from "./Jornada";
+
  
 export class Usuario{
     
@@ -8,4 +10,5 @@ export class Usuario{
     public senha!: string;
     public flag_profissional_saude!: boolean;
     public documento_identificacao!: string;
+    public jornadas!: Jornada[];
 }

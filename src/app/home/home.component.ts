@@ -8,6 +8,7 @@ import { ViewportScroller } from '@angular/common';
 import { Injectable } from '@angular/core';
 //import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { MyToken } from '../model/MyToken';
+import { Jornada } from '../model/Jornada';
 
 //Para funcionar o JQuery é preciso instalar as bibiliotecas a seguir:
 //npm install jquery --save
@@ -27,6 +28,14 @@ export class HomeComponent implements OnInit {
   public nomeCompleto!: string;
   public nomeCompletoProfissional!: string;
   public flag_profissional_saude!:boolean;
+  public jornada1!: Jornada;
+  public jornada2!: Jornada;
+  public jornada3!: Jornada;
+  public jornada4!: Jornada;
+  public jornada5!: Jornada;
+  public jornada6!: Jornada;
+  public jornada7!: Jornada;
+  public jornadaList!: Jornada[];
   public email!: string;
   public documento!: string;
   public telefone!: string;
@@ -201,6 +210,53 @@ export class HomeComponent implements OnInit {
       this.usuario.telefone = this.telefone;
       this.usuario.senha = this.senha;
       this.usuario.flag_profissional_saude = false;
+
+      console.log('inicio jornada');
+
+      this.jornada1 = new Jornada();
+      this.jornada1.idFase = 1;
+      this.jornada1.textoFase = "Medico 1";
+      this.jornada1.faseFinalizada = false;
+
+      console.log('jornada'+this.jornada1.textoFase);
+
+      this.jornada2 = new Jornada();
+      this.jornada2.idFase = 2;
+      this.jornada2.textoFase = "Medico 2";
+      this.jornada2.faseFinalizada = false;
+
+      this.jornada3 = new Jornada();
+      this.jornada3.idFase = 3;
+      this.jornada3.textoFase = "Medico 3";
+      this.jornada3.faseFinalizada = false;
+
+      this.jornada4 = new Jornada();
+      this.jornada4.idFase = 4;
+      this.jornada4.textoFase = "Medico 4";
+      this.jornada4.faseFinalizada = false;
+
+      this.jornada5 = new Jornada();
+      this.jornada5.idFase = 5;
+      this.jornada5.textoFase = "Medico 5";
+      this.jornada5.faseFinalizada = false;
+
+      this.jornada6 = new Jornada();
+      this.jornada6.idFase = 6;
+      this.jornada6.textoFase = "Medico 6";
+      this.jornada6.faseFinalizada = false;
+
+      this.jornada7 = new Jornada();
+      this.jornada7.idFase = 7;
+      this.jornada7.textoFase = "Medico 7";
+      this.jornada7.faseFinalizada = false;
+
+      this.jornadaList = [ ]; 
+
+      this.jornadaList.push(this.jornada1, this.jornada2, this.jornada3, this.jornada4, this.jornada5, this.jornada6, this.jornada7);
+
+      console.log(this.jornadaList);
+
+      this.usuario.jornadas = this.jornadaList;
 
       console.log(this.usuario);
       this.srv.insere(this.usuario).subscribe(
