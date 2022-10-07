@@ -53,6 +53,7 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> getInfo(@RequestParam String token){
         if (token != null) {
             if (Autenticador.isValid(token)) {
+                System.out.println("chegou info" + token);
                 return ResponseEntity.ok(Autenticador.getUser(token));
             }
             return ResponseEntity.status(403).build();

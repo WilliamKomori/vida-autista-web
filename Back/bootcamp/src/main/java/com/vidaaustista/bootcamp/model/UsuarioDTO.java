@@ -1,11 +1,13 @@
 package com.vidaaustista.bootcamp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.vidaaustista.bootcamp.entity.JornadaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -35,6 +37,9 @@ public class UsuarioDTO {
 
     @JsonProperty("documento_identificacao")
     private String documentoIdentificacao;
+
+    @JsonProperty("jornadas")
+    private List<JornadaEntity> jornadas;
 
     public String toString() {
         return idUsuario+";"+nome+";"+email;
