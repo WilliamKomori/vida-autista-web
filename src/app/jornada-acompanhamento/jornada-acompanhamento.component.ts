@@ -36,7 +36,7 @@ export class JornadaAcompanhamentoComponent implements OnInit {
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-              this.listarJornada(3);
+              this.listarJornada(this.usuario.idUsuario);
         },   
       err => {
         console.log(err);
