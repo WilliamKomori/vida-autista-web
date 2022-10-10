@@ -31,19 +31,19 @@ export class JornadaAcompanhamentoComponent implements OnInit {
 
       this.srv.buscarInfo(this.currentUser).subscribe(
         (res: any) => {
-          
+
               Globals.user = res;
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-              this.listarJornada(this.usuario.idUsuario);
-        },   
+              this.listarJornada(3);
+        },
       err => {
         console.log(err);
         alert("Erro ao inserir");
       });
-    
-  }else{     
+
+  }else{
     this.router.navigate(['/home']);
     alert("Você Precisa estar conectado para acessar essa página!")
     console.log(localStorage.getItem);
