@@ -215,39 +215,37 @@ export class HomeComponent implements OnInit {
 
       this.jornada1 = new Jornada();
       this.jornada1.idFase = 1;
-      this.jornada1.textoFase = "Medico 1";
+      this.jornada1.textoFase = "Pediatra";
       this.jornada1.faseFinalizada = false;
-
-      console.log('jornada'+this.jornada1.textoFase);
 
       this.jornada2 = new Jornada();
       this.jornada2.idFase = 2;
-      this.jornada2.textoFase = "Medico 2";
+      this.jornada2.textoFase = "Neuropediatra";
       this.jornada2.faseFinalizada = false;
 
       this.jornada3 = new Jornada();
       this.jornada3.idFase = 3;
-      this.jornada3.textoFase = "Medico 3";
+      this.jornada3.textoFase = "Otorrinolaringologista";
       this.jornada3.faseFinalizada = false;
 
       this.jornada4 = new Jornada();
       this.jornada4.idFase = 4;
-      this.jornada4.textoFase = "Medico 4";
+      this.jornada4.textoFase = "Neuropsicológico";
       this.jornada4.faseFinalizada = false;
 
       this.jornada5 = new Jornada();
       this.jornada5.idFase = 5;
-      this.jornada5.textoFase = "Medico 5";
+      this.jornada5.textoFase = "Terapias";
       this.jornada5.faseFinalizada = false;
 
       this.jornada6 = new Jornada();
       this.jornada6.idFase = 6;
-      this.jornada6.textoFase = "Medico 6";
+      this.jornada6.textoFase = "Intervenção Familiar";
       this.jornada6.faseFinalizada = false;
 
       this.jornada7 = new Jornada();
       this.jornada7.idFase = 7;
-      this.jornada7.textoFase = "Medico 7";
+      this.jornada7.textoFase = "Dicas/Observações";
       this.jornada7.faseFinalizada = false;
 
       this.jornadaList = [ ]; 
