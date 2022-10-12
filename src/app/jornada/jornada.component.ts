@@ -37,14 +37,10 @@ export class JornadaComponent implements OnInit {
         alert("Erro ao inserir");
       });
     
-  }else{     
-    this.router.navigate(['/home']);
-    alert("Você Precisa estar conectado para acessar essa página!")
-    console.log(localStorage.getItem);
+    }else{     
+      this.router.navigate(['/home']);
+      alert("Você Precisa estar conectado para acessar essa página!")
+      console.log(localStorage.getItem);
+    }
   }
-
-  }
-
-
-
 }
