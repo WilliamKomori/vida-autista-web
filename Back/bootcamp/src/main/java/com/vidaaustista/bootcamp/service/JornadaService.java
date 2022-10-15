@@ -51,4 +51,11 @@ public class JornadaService {
         }
     }
 
+    public List<NotesEntity> recuperarTodasObervacoes(int idUser) {
+        return notesRepository.findbyIdUsuario(idUser);
+    }
+
+    public List<NotesEntity> recuperarTodasObervacoes(int idUser, int idFase) {
+        return notesRepository.findbyIdUsuarioEFase(idUser, idFase);
+    }
 }

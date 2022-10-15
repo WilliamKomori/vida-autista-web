@@ -45,4 +45,14 @@ public class JornadaController {
         }
     }
 
+    @GetMapping("/notes/all/{id}")
+    public ResponseEntity<List<NotesEntity>> mostrarTodasObservacoes(@PathVariable int id){
+        return ResponseEntity.ok(jornadaService.recuperarTodasObervacoes(id));
+    }
+
+    @GetMapping("/notes/all/{id_user}/{id_fase}")
+    public ResponseEntity<List<NotesEntity>> mostrarTodasObservacoes(@PathVariable int id_user, @PathVariable int id_fase ){
+        return ResponseEntity.ok(jornadaService.recuperarTodasObervacoes(id_user, id_fase));
+    }
+
 }
