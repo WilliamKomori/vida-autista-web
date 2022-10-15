@@ -1,0 +1,33 @@
+<main id="main" class="main">
+    <section class="section">
+
+        <div class="form-group ">
+            <label for="tipoos" class="col-md-1 control-label">Filtrar</label>
+            <div class="col-md-3">
+                <select  class="form-control"  id="comboboxJornadas" data-placeholder="Selecione a fase da jornada">
+                    <option value="0" [value]="idFase"></option>
+                    <option value="1" [value]="idFase">Pediatra</option>
+                    <option value="2" [value]="idFase">Neuropediatra</option>
+                    <option value="3" [value]="idFase">Otorrinolaringologista</option>
+                    <option value="4" [value]="idFase">Neuropsicológico</option>
+                    <option value="5" [value]="idFase">Terapias</option>
+                    <option value="6" [value]="idFase">Intervenção Familiar</option>
+                    <option value="7" [value]="idFase">Dicas/Observações</option>
+                </select>
+                <button (click)="listarAnotacoesPorFase()">Buscar</button>
+
+            </div>
+        </div>
+
+        <div *ngIf=" _observacoes == null"> 
+            <div *ngFor="let item of observacoes">
+                <ul>
+                    <li class="item">{{item.dataObservacao}} - {{item.observacao}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+

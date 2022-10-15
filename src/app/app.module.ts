@@ -41,6 +41,7 @@ import { TooltipsComponent } from './components/tooltips/tooltips.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
+import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada
     TooltipsComponent,
     CalendarioComponent,
     MeuPerfilComponent,
-    JornadaAcompanhamentoComponent
+    JornadaAcompanhamentoComponent,
+    AnotacoesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

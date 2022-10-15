@@ -48,7 +48,7 @@ export class JornadaAcompanhamentoComponent implements OnInit {
         },
       err => {
         console.log(err);
-        alert("Erro ao inserir");
+        alert("Erro ao carregar informações do usuario");
       });
 
   }else{

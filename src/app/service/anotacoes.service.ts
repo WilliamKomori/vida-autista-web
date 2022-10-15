@@ -14,4 +14,12 @@ export class AnotacoesService {
     return this.http.post("http://localhost:8080/notes/new",note);
   }
 
+  public getAnotacaoByUser(id: number){
+    return this.http.get<Notes[]>("http://localhost:8080/notes/all/"+id);
+  }
+
+  public getAnotacaoByUserAndFase(id: number, idFase: number){
+    return this.http.get<Notes[]>("http://localhost:8080/notes/all/"+id+"/"+idFase);
+  }
+
 }

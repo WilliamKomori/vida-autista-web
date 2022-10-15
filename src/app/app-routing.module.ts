@@ -32,6 +32,7 @@ import { IconsRemixComponent } from './components/icons-remix/icons-remix.compon
 import { IconsBoxiconsComponent } from './components/icons-boxicons/icons-boxicons.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
+import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 
 const routes: Routes = [  
 { path: '', redirectTo: "/home", pathMatch: "full"},
@@ -43,6 +44,7 @@ const routes: Routes = [
 { path: 'dashboard', component: DashboardComponent},
 { path: 'calendario', component: CalendarioComponent},
 { path: 'meu-perfil', component: MeuPerfilComponent},
+{ path: 'anotacoes', component: AnotacoesComponent},
 
 
 
