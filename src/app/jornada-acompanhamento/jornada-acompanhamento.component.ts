@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Globals } from '../model/Globals';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
@@ -87,6 +87,8 @@ export class JornadaAcompanhamentoComponent implements OnInit {
       }
     )
   }
+
+
 
 }
 

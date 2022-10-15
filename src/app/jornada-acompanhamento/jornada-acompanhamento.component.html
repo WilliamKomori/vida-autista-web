@@ -1,21 +1,25 @@
 <main id="main" class="main">
     <section class="section">
+
         <div class="split left">
             <div class="centered">
-                <div *ngIf=" _jornadas == null"> 
+                <div *ngIf=" _jornadas == null">
                     <div *ngFor="let item of jornadas">
-                        
+
                         <div *ngIf=" item.faseFinalizada == false ">
                             <ul>
-                                <li class="item_false" (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}
-                                </li>
+                              <li class="item_false" >
+                                <button (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
                             </ul>
                         </div>
                         <div *ngIf=" item.faseFinalizada == true ">
                             <ul>
-                                <li class="item_true" (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</li>
+                              <li class="item_true">
+                                <button  (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
                             </ul>
-                        </div>  
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Data Observação</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Data" [(ngModel)]="dataObservacao"
+                      <input type="datetime-local" class="form-control" id="exampleInputPassword1" placeholder="Data" [(ngModel)]="dataObservacao"
                       [ngModelOptions]="{standalone: true}">
                     </div>
                     <div class="form-check">
