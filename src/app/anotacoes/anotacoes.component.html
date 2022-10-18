@@ -1,32 +1,60 @@
 <main id="main" class="main">
     <section class="section">
 
-        <div class="form-group ">
-            <label for="tipoos" class="col-md-1 control-label">Filtrar</label>
-            <div class="col-md-3">
-                <select  class="form-control"  id="comboboxJornadas" data-placeholder="Selecione a fase da jornada">
-                    <option value="0" [value]="idFase"></option>
-                    <option value="1" [value]="idFase">Pediatra</option>
-                    <option value="2" [value]="idFase">Neuropediatra</option>
-                    <option value="3" [value]="idFase">Otorrinolaringologista</option>
-                    <option value="4" [value]="idFase">Neuropsicológico</option>
-                    <option value="5" [value]="idFase">Terapias</option>
-                    <option value="6" [value]="idFase">Intervenção Familiar</option>
-                    <option value="7" [value]="idFase">Dicas/Observações</option>
-                </select>
-                <button (click)="listarAnotacoesPorFase()">Buscar</button>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+        <div class="container">
+        <div class="main-body p-0">
+            <div class="inner-wrapper">
+       
+                <!-- Inner main -->
+                <div class="inner-main">
+                    <!-- Inner main header -->
+                    <p class="titulo">Filtrar por Fase:</p>
+                    <div class="inner-main-header">
+                        <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
+                        <select [(ngModel)]="selectedJornada" class="custom-select custom-select-md w-auto mr-1">
+                            <option value="1">Pediatra</option>
+                            <option value="2">Neuropediatra</option>
+                            <option value="3">Otorrinolaringologista</option>
+                            <option value="4">Neuropsicológico</option>
+                            <option value="5">Terapias</option>
+                            <option value="6">Intervenção Familiar</option>
+                            <option value="7">Dicas/Observações</option>
+                        </select>
+                        <span class="input-icon input-icon-sm ml-auto w-auto">
+                            <button type="button" class="btn btn-info btn-lg" (click)="listarAnotacoesPorFase()">Pesquisar</button>
+                        </span>      
+                            <button class="btn btn-info btn-lg" id="botaoLimpar" (click)="listarAnotacoes()">Limpar Filtro</button>
 
+                    </div>
+                    <!-- /Inner main header -->
+        
+                    <!-- Inner main body -->
+        
+                    <!-- Forum List -->
+                    <div class="inner-main-body p-2 p-sm-3 collapse forum-content show" *ngIf=" _observacoes == null">
+                        <div class="card mb-2" *ngFor="let item of observacoes">
+                            <div class="card-body p-2 p-sm-3">
+                                <div class="media forum-item" >
+                                    <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                                    <div class="media-body" >
+                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{usuario.nome}}</a></h6>
+                                        <p class="text-secondary">
+                                            {{item.observacao}}
+                                        </p>
+                                        <p class="text-muted"><span class="text-secondary font-weight-bold">{{item.dataObservacao}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Forum List -->
+                    <!-- /Inner main body -->
+                </div>
+                <!-- /Inner main -->
             </div>
         </div>
-
-        <div *ngIf=" _observacoes == null"> 
-            <div *ngFor="let item of observacoes">
-                <ul>
-                    <li class="item">{{item.dataObservacao}} - {{item.observacao}}</li>
-                </ul>
-            </div>
         </div>
-
     </section>
 </main>
 

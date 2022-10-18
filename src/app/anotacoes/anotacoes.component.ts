@@ -15,6 +15,7 @@ import { Notes } from '../model/Notes';
 export class AnotacoesComponent implements OnInit {
 
   idFase! : number;
+  selectedJornada! : number;
   _observacoes!: Notes[];
   observacoes!: Notes[];
   usuario!: Usuario;
@@ -35,7 +36,7 @@ export class AnotacoesComponent implements OnInit {
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-              this.listarAnotacoes(this.usuario.idUsuario);
+              this.listarAnotacoes();
         },
       err => {
         console.log(err);
@@ -50,18 +51,15 @@ export class AnotacoesComponent implements OnInit {
 
   }
 
-  listarAnotacoes(id: number){
+  listarAnotacoes(){
     this._observacoes == null;
-    this.nsrv.getAnotacaoByUser(id).subscribe((res: any) => this.observacoes = res);
+    this.nsrv.getAnotacaoByUser(this.usuario.idUsuario).subscribe((res: any) => this.observacoes = res);
   }
 
   listarAnotacoesPorFase(){
+
     this._observacoes == null;
-    var comboboxValue = document.getElementById('comboboxJornadas');
-    console.log(comboboxValue?.nodeValue);
-    console.log(comboboxValue);    
-    console.log(comboboxValue?.getAttribute);
-    this.nsrv.getAnotacaoByUserAndFase(this.usuario.idUsuario, 3).subscribe((res: any) => this.observacoes = res);
+    this.nsrv.getAnotacaoByUserAndFase(this.usuario.idUsuario, this.selectedJornada).subscribe((res: any) => this.observacoes = res);
   }
 
 }
