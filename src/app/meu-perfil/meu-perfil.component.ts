@@ -14,6 +14,12 @@ export class MeuPerfilComponent implements OnInit {
 
   usuario!: Usuario;
   currentUser! : string;
+  public email!: string;
+  public documento!: string;
+  public telefone!: string;
+  public dataNascimento!: string;
+  public senha!: string;
+  public nomeCompleto!: string;
 
   constructor(public router: Router, public srv: UsuarioService) { }
 

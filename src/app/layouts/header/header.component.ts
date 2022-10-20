@@ -50,4 +50,13 @@ export class HeaderComponent implements OnInit {
     this.document.body.classList.toggle('toggle-sidebar');
   }
 
+  public logout(){
+    if(localStorage.getItem("MyToken")){
+      localStorage.removeItem("MyToken");
+      this.router.navigate(['/home']);
+    }else{
+    this.router.navigate(['/home']);
+    }
+  }
+
 }
