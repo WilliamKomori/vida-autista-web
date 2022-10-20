@@ -1,14 +1,10 @@
 package com.vidaaustista.bootcamp.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -27,8 +23,8 @@ public class UsuarioEntity {
     @Column(name = "senha")
     private String senha;
 
-    @Column(name = "dataNascimento")
-    private Date dataNascimento;
+    @Column(name = "data_nascimento")
+    private String dataNascimento;
 
     @Column(name = "telefone")
     private String telefone;
@@ -41,6 +37,9 @@ public class UsuarioEntity {
 
     @Column(name = "documentoIdentificacao")
     private String documentoIdentificacao;
+
+    @Column(name="imagem", length=300)
+    private String imagem;
 
     @OneToMany(targetEntity = JornadaEntity.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="id_user_fk",referencedColumnName = "idUsuario")

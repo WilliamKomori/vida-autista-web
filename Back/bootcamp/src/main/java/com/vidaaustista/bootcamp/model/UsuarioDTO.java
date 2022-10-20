@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.Column;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class UsuarioDTO {
     private String nome;
 
     @JsonProperty("data_nascimento")
-    private Date dataNascimento;
+    private String dataNascimento;
 
     @JsonProperty("telefone")
     private String telefone;
@@ -38,11 +39,14 @@ public class UsuarioDTO {
     @JsonProperty("documento_identificacao")
     private String documentoIdentificacao;
 
+    @JsonProperty("imagem")
+    private String imagem;
+
     @JsonProperty("jornadas")
     private List<JornadaEntity> jornadas;
 
     public String toString() {
-        return idUsuario+";"+nome+";"+email;
+        return idUsuario+";"+nome+";"+email+";"+dataNascimento+";"+telefone+";"+imagem;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.vidaaustista.bootcamp.controller;
 
+import com.vidaaustista.bootcamp.entity.UsuarioEntity;
 import com.vidaaustista.bootcamp.model.UsuarioDTO;
 import com.vidaaustista.bootcamp.security.Autenticador;
 import com.vidaaustista.bootcamp.security.Token;
@@ -59,5 +60,20 @@ public class UsuarioController {
             return ResponseEntity.status(403).build();
         }
         return ResponseEntity.badRequest().build();
+    }
+
+    @PutMapping("/user/alterar/{id}")
+    public ResponseEntity<UsuarioEntity> atualizarDados(@PathVariable int id, @RequestBody UsuarioEntity usuario){
+        usuarioService.atualizarUsuario(usuario, id);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UsuarioEntity> buscarUsuarioPeloId(@PathVariable int id){
+        UsuarioEntity p =usuarioService.recuperarPorId(id);
+        if(p != null) {
+            return ResponseEntity.ok(p);
+        }
+        return ResponseEntity.notFound().build();
     }
 }

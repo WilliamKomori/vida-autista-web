@@ -35,5 +35,23 @@ public class UsuarioService {
         return usuarioDTOList;
     }
 
-    
+    public void atualizarUsuario(UsuarioEntity usuario, int id) {
+        try {
+            UsuarioEntity usuarioEntity = usuarioRepository.findById(id).get();
+            usuarioEntity.setEmail(usuario.getEmail());
+            usuarioEntity.setDataNascimento(usuario.getDataNascimento());
+            usuarioEntity.setDocumentoIdentificacao(usuario.getDocumentoIdentificacao());
+            usuarioEntity.setImagem(usuario.getImagem());
+            usuarioEntity.setSenha(usuario.getSenha());
+            usuarioEntity.setNome(usuario.getNome());
+            usuarioEntity.setTelefone(usuario.getTelefone());
+            usuarioRepository.save(usuarioEntity);
+        }catch(Exception ex) {
+            throw new RuntimeException("Erro ao atualizar novo usuario");
+        }
+    }
+
+    public UsuarioEntity recuperarPorId(int id) {
+        return usuarioRepository.findById(id).get();
+    }
 }
