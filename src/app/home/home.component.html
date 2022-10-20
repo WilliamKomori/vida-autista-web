@@ -230,6 +230,11 @@
               <span id="spanPadrao" *ngIf='_msgErroTelefone'>{{_msgErroTelefone}}</span>
             </div>
             <div class="form-label-group mt-3">
+              <label for="inputTelefone">Data de Nascimento</label>
+              <input type="date" id="inputDataNascimento" class="form-control" [(ngModel)]="dataNascimento"
+                [ngModelOptions]="{standalone: true}" placeholder="Digite sua data de Nascimento" required autofocus>
+            </div>
+            <div class="form-label-group mt-3">
               <label for="inputPassword">Senha</label>
               <input type="password" id="inputPassword" class="form-control" [(ngModel)]="senha"
                 [ngModelOptions]="{standalone: true}" placeholder="Digite a sua senha (minimo de 10 caracteres)"
