@@ -36,7 +36,7 @@ export class MeuPerfilComponent implements OnInit {
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-              this.usuario.data_nascimento = res.data_nascimento;
+              this.usuario.dataNascimento = res.dataNascimento;
               this.usuario.telefone = res.telefone;
               this.usuario.email = res.email;
         },
@@ -53,4 +53,22 @@ export class MeuPerfilComponent implements OnInit {
 
   }
 
+  atualizar(){
+
+    console.log(this.usuario);
+
+    this.srv.atualiza(this.usuario, this.usuario.idUsuario).subscribe(
+      res =>{
+        alert("Atualizado com Sucesso!");
+      },
+      err=>{
+        console.log(err);
+        alert("Erro ao atualizar");
+      }
+    )
+  
+  }
+
 }
+
+

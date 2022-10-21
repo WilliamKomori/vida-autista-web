@@ -211,7 +211,7 @@ export class HomeComponent implements OnInit {
       this.usuario.telefone = this.telefone;
       this.usuario.senha = this.senha;
       this.usuario.flag_profissional_saude = false;
-      this.usuario.data_nascimento = this.dataNascimento;
+      this.usuario.dataNascimento = this.dataNascimento;
 
       console.log('inicio jornada');
 
@@ -281,7 +281,7 @@ export class HomeComponent implements OnInit {
       this.usuario.senha = this.senha;
       this.usuario.flag_profissional_saude = true;
       this.usuario.documento_identificacao = this.documento;
-      this.usuario.data_nascimento = this.dataNascimento;
+      this.usuario.dataNascimento = this.dataNascimento;
 
 
       console.log(this.usuario);
