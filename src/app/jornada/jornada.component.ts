@@ -20,31 +20,39 @@ export class JornadaComponent implements OnInit {
 
   ngOnInit() {
 
-    if(localStorage.getItem("MyToken")){
-        
-      this.currentUser = JSON.parse(localStorage.getItem('MyToken') || '{}');
+/*    if(localStorage.getItem("MyToken")){
+
+      this.currentUser = localStorage.getItem("MyToken")!;
 
       this.srv.buscarInfo(this.currentUser).subscribe(
         (res: any) => {
-          
+
               Globals.user = res;
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-        },   
+        },
       err => {
         console.log(err);
         alert("Erro ao inserir");
       });
-    
-  }else{     
+
+  }else{
     this.router.navigate(['/home']);
     alert("Você Precisa estar conectado para acessar essa página!")
     console.log(localStorage.getItem);
-  }
+  }*/
 
   }
 
+  Onclick(){
+
+        this.router.navigate(['/jornada-acompanhamento']);
+
+    }
+
+  }
 
 
-}
+
+
