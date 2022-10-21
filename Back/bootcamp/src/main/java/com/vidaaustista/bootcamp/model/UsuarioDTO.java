@@ -21,7 +21,7 @@ public class UsuarioDTO {
     @JsonProperty("nome")
     private String nome;
 
-    @JsonProperty("data_nascimento")
+    @JsonProperty("dataNascimento")
     private String dataNascimento;
 
     @JsonProperty("telefone")

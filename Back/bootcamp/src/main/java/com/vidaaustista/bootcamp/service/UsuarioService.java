@@ -42,7 +42,6 @@ public class UsuarioService {
             usuarioEntity.setDataNascimento(usuario.getDataNascimento());
             usuarioEntity.setDocumentoIdentificacao(usuario.getDocumentoIdentificacao());
             usuarioEntity.setImagem(usuario.getImagem());
-            usuarioEntity.setSenha(usuario.getSenha());
             usuarioEntity.setNome(usuario.getNome());
             usuarioEntity.setTelefone(usuario.getTelefone());
             usuarioRepository.save(usuarioEntity);
