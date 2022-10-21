@@ -1,0 +1,55 @@
+<main id="main" class="main">
+    <section class="section">
+
+        <div class="split left">
+            <div class="centered">
+                <div *ngIf=" _jornadas == null">
+                    <div *ngFor="let item of jornadas">
+
+                        <div *ngIf=" item.faseFinalizada == false ">
+                            <ul>
+                              <li class="item_false" >
+                                <button (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
+                            </ul>
+                        </div>
+                        <div *ngIf=" item.faseFinalizada == true ">
+                            <ul>
+                              <li class="item_true">
+                                <button  (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="split right" *ngIf="_observacoes != null">
+            <div class="centered">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Observação</label>
+                      <textarea class="form-control" aria-label="With textarea" [(ngModel)]="observacao"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Data Observação</label>
+                      <input type="datetime-local" class="form-control" id="exampleInputPassword1" placeholder="Data" [(ngModel)]="dataObservacao"
+                      [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="faseFinalizada"
+                      [ngModelOptions]="{standalone: true}">
+                      <label class="form-check-label" for="exampleCheck1">Fase Finalizada?</label>
+                    </div>
+                    <button type="submit" (click)="insereAnotacao();" class="btn btn-primary">Incluir</button>
+                  </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+

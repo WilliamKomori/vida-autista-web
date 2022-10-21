@@ -1,0 +1,29 @@
+.button-jornada button {
+  margin-left: 70%;
+  padding-top: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  border: green 2px solid;
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carousel-control-prev-icon{
+  background-color: black;
+  margin-right: 210px;
+}
+.carousel-control-next-icon{
+  background-color: black;
+ margin-left: 210px;
+}
+
+.carousel-indicators li
+{
+  background-color: black;
+  cursor: pointer;
+
+}
+
+

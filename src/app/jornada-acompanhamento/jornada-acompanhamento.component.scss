@@ -1,0 +1,83 @@
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+
+    li{
+
+    &:hover{
+      background-color: rgb(186, 223, 186);
+    }
+
+    }
+
+    button {
+      border: 0px solid;
+      cursor: pointer;
+    }
+
+    li button{
+      &:focus{
+        border: 2px solid black;
+      }
+    }
+
+
+
+  .item_false {
+    border: 1px solid #ddd; /* Add a thin border to each list item */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Add a grey background color */
+    padding: 12px; /* Add some padding */
+  }
+
+  .item_true {
+    border: 1px solid #ddd; /* Add a thin border to each list item */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #4BB543; /* Add a grey background color */
+    padding: 12px; /* Add some padding */
+  }
+
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    padding-top: 20px;
+  }
+
+  /* Control the left side */
+  .left {
+    width: 50%;
+    left: 0;
+  }
+
+  /* Control the right side */
+  .right {
+    width: 40%;
+    height: 780px;
+    float: right;
+    right: 30px;
+    top: 80px;
+    position: absolute;
+  }
+
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    top: 30%;
+    left: 35%;
+    text-align: left;
+  }
+
+  .section {
+    height: 780px;
+  }
+
+.centered form {
+  float: right;
+  width: 500px;
+  margin-right: 125px;
+}
+

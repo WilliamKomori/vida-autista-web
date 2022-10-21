@@ -42,6 +42,9 @@ public class Autenticador {
                         .idUsuario(Integer.parseInt(partes[1]))
                         .nome(partes[2])
                         .email(partes[3])
+                        .dataNascimento(partes[4])
+                        .telefone(partes[5])
+                        .imagem(partes[6])
                         .build();
         return c;
     }
