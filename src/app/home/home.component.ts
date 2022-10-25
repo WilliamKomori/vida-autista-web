@@ -212,6 +212,7 @@ export class HomeComponent implements OnInit {
       this.usuario.senha = this.senha;
       this.usuario.flag_profissional_saude = false;
       this.usuario.dataNascimento = this.dataNascimento;
+      this.usuario.imagem = "https://diorama.go.leg.br/site/custom/default/img/no-avatar.png";
 
       console.log('inicio jornada');
 

@@ -26,6 +26,10 @@ export class UsuarioService {
     return this.http.put("http://localhost:8080/user/alterar/"+id,usuario);
   }
 
+  public atualizaSenha(usuario: Usuario, id: number){
+    return this.http.put("http://localhost:8080/user/alterar/"+ id +"/senha", usuario);
+  }
+
   public autenticar(usuario: Usuario) {
     return this.http.post("http://localhost:8080/user/login", usuario);
   }

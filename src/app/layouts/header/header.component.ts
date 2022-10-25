@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
               Globals.user = res;
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
+              this.usuario.imagem = res.imagem;
               this.usuario.idUsuario = res.idUsuario;
         },
       err => {
