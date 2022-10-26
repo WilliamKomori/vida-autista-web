@@ -268,7 +268,7 @@ export class AgendaComponent implements OnInit {
       document.body.appendChild(a);
       a.setAttribute('style', 'display: none');
       a.href = url;
-      a.download = pdf.filename;
+      a.download = "Agenda";
       a.click();
       window.URL.revokeObjectURL(url);
       a.remove();
