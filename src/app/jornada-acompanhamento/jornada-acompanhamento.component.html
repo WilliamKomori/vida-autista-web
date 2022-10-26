@@ -28,7 +28,7 @@
 
         <div class="split right" *ngIf="_observacoes != null">
             <div class="centered">
-                <form>
+                
                     <div class="form-group">
                       <label for="exampleInputEmail1">Observação</label>
                       <textarea class="form-control" aria-label="With textarea" [(ngModel)]="observacao"
@@ -39,13 +39,20 @@
                       <input type="datetime-local" class="form-control" id="exampleInputPassword1" placeholder="Data" [(ngModel)]="dataObservacao"
                       [ngModelOptions]="{standalone: true}">
                     </div>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="faseFinalizada"
-                      [ngModelOptions]="{standalone: true}">
-                      <label class="form-check-label" for="exampleCheck1">Fase Finalizada?</label>
-                    </div>
-                    <button type="submit" (click)="insereAnotacao();" class="btn btn-primary">Incluir</button>
-                  </form>
+
+                <div class="form-group">
+                        <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
+                        <label class="form-check-label" for="exampleCheck1">Fase Finalizada?</label>
+                        <select [(ngModel)]="faseFinalizadaSelect" [ngModelOptions]="{standalone: true}" class="custom-select custom-select-md w-auto mr-1">
+                          <option value="1">Não</option>
+                          <option value="2">Sim</option>
+                        </select>
+                        <br><br>
+                        <span class="input-icon input-icon-sm ml-auto w-auto">
+                            <button type="button" class="btn btn-info btn-lg" (click)="insereAnotacao()">Incluir</button>
+                        </span>
+
+                </div>
             </div>
         </div>
     </section>

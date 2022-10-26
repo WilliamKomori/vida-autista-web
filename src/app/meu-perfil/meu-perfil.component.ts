@@ -3,6 +3,8 @@ import { Globals } from 'src/app/model/Globals';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Usuario } from 'src/app/model/Usuario';
+import { HttpClient } from '@angular/common/http';
+import { FileUploadServiceService } from 'src/app/service/file-upload-service.service';
 
 @Component({
   selector: 'app-meu-perfil',
@@ -12,6 +14,9 @@ import { Usuario } from 'src/app/model/Usuario';
 })
 export class MeuPerfilComponent implements OnInit {
 
+  shortLink: string = "";
+  loading: boolean = false; // Flag variable
+  file!: File; // Variable to store file
   usuario!: Usuario;
   currentUser! : string;
   public email!: string;
@@ -20,8 +25,11 @@ export class MeuPerfilComponent implements OnInit {
   public dataNascimento!: string;
   public senha!: string;
   public nomeCompleto!: string;
+  public senhaAtual!: string;
+  public novaSenha!: string;
+  public novaSenhaRepetida!: string;
 
-  constructor(public router: Router, public srv: UsuarioService) { }
+  constructor(public router: Router, public srv: UsuarioService, private http: HttpClient, private fileUploadService: FileUploadServiceService) {}
 
   ngOnInit(): void {
     
@@ -39,6 +47,8 @@ export class MeuPerfilComponent implements OnInit {
               this.usuario.dataNascimento = res.dataNascimento;
               this.usuario.telefone = res.telefone;
               this.usuario.email = res.email;
+              this.usuario.imagem = res.imagem;
+              this.usuario.senha = res.senha;
         },
       err => {
         console.log(err);
@@ -50,6 +60,32 @@ export class MeuPerfilComponent implements OnInit {
     alert("Você Precisa estar conectado para acessar essa página!")
     console.log(localStorage.getItem);
   }
+
+  }
+
+  onFileChanged(event: any) {
+    console.log(event);
+    this.file = event.target.files[0];
+    this.onUpload();
+  }
+
+  onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.fileUploadService.upload(this.file).subscribe(
+      (event: any) => {
+          if (typeof (event) === 'object') {
+
+            console.log(event);
+            console.log(event.link);
+
+              // Short link via api response
+              this.shortLink = event.link;
+
+              this.loading = false; // Flag variable 
+          }
+      }
+  );
 
   }
 
@@ -67,6 +103,38 @@ export class MeuPerfilComponent implements OnInit {
       }
     )
   
+  }
+
+  atualizarSenha(){
+
+    console.log(this.usuario);
+
+    if(this.novaSenha == this.novaSenhaRepetida){
+
+      if(this.usuario.senha == this.senhaAtual){
+
+        this.usuario.senha = this.novaSenha;
+
+        this.srv.atualizaSenha(this.usuario, this.usuario.idUsuario).subscribe(
+          res =>{
+            alert("Atualizado com Sucesso!");
+          },
+          err=>{
+            console.log(err);
+            alert("Erro ao atualizar");
+          }
+        )
+
+      }
+      else{
+        alert("Senha Atual Inválida");
+      }
+
+    }
+    else{
+      alert("As senhas não correspondem!");
+    }
+
   }
 
 }

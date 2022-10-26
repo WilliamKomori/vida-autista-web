@@ -68,6 +68,11 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
+    @PutMapping("/user/alterar/{id}/senha")
+    public ResponseEntity<UsuarioEntity> atualizarSenha(@PathVariable int id, @RequestBody UsuarioEntity usuario){
+        return ResponseEntity.ok(usuarioService.atualizarSenha(id, usuario));
+    }
+
     @GetMapping("/user/{id}")
     public ResponseEntity<UsuarioEntity> buscarUsuarioPeloId(@PathVariable int id){
         UsuarioEntity p =usuarioService.recuperarPorId(id);

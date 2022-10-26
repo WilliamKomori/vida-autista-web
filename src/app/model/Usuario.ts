@@ -12,4 +12,5 @@ export class Usuario{
     public flag_profissional_saude!: boolean;
     public documento_identificacao!: string;
     public jornadas!: Jornada[];
+    public imagem!: string;
 }
