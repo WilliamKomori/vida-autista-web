@@ -40,3 +40,37 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#BACK DOTNET
+/Back/dotnet/*/*.swp
+/Back/dotnet/*/*.*~
+/Back/dotnet/*/project.lock.json
+/Back/dotnet/*/.DS_Store
+/Back/dotnet/*/*.pyc
+
+# Visual Studio Code
+/Back/dotnet/*/.vscode
+
+# User-specific files
+/Back/dotnet/*/*.suo
+/Back/dotnet/*/*.user
+/Back/dotnet/*/*.userosscache
+/Back/dotnet/*/*.sln.docstates
+
+# Build results
+/Back/dotnet/*/[Dd]ebug/
+/Back/dotnet/*/[Dd]ebugPublic/
+/Back/dotnet/*/[Rr]elease/
+/Back/dotnet/*/[Rr]eleases/
+/Back/dotnet/*/x64/
+/Back/dotnet/*/x86/
+/Back/dotnet/*/build/
+/Back/dotnet/*/bld/
+/Back/dotnet/*/[Bb]in/
+/Back/dotnet/*/[Oo]bj/
+/Back/dotnet/*/msbuild.log
+/Back/dotnet/*/msbuild.err
+/Back/dotnet/*/msbuild.wrn
+
+# Visual Studio 2015
+/Back/dotnet/*/.vs/
