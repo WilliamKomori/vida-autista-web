@@ -1,4 +1,4 @@
-﻿using DinkToPdf;
+using DinkToPdf;
 using DinkToPdf.Contracts;
 using System.Data.Common;
 using System.Drawing;
@@ -12,56 +12,56 @@ using VidaAutistaDotnet.Application.Interfaces;
 
 namespace VidaAutistaDotnet.Application.Reports
 {
-    public class ReportService : IReportService
+  public class ReportService : IReportService
+  {
+    private readonly IConverter _converter;
+    private readonly ICalendarioService _calendarioService;
+    public ReportService(IConverter converter, ICalendarioService calendarioService)
     {
-        private readonly IConverter _converter;
-        private readonly ICalendarioService _calendarioService;
-        public ReportService(IConverter converter, ICalendarioService calendarioService)
-        {
-            _converter = converter;
-            _calendarioService = calendarioService;
-        }
-        public byte[] GetRelatorioAgenda(int idUsuario)
-        {
-            var css = @"<style>html,body{height:100%}body{margin:0;background:linear-gradient(45deg,#49a09d,#5f2c82);font-family:sans-serif;font-weight:100}.container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}table{width:800px;border-collapse:collapse;overflow:hidden;box-shadow:0 0 20px rgba(0,0,0,.1)}th,td{padding:15px;background-color:rgba(255,255,255,.2);color:#fff}th{text-align:left}thead{th{background-color:#55608f}}tbody{tr{&:hover{background-color:rgba(255,255,255,.3)}}td{position:relative;&:hover{&:before{content:"";position:absolute;left:0;right:0;top:-9999px;bottom:-9999px;background-color:rgba(255,255,255,.2);z-index:-1}}}}</style>";
-            var html = RetornaHtmlRelatorioAgenda(idUsuario);
+      _converter = converter;
+      _calendarioService = calendarioService;
+    }
+    public byte[] GetRelatorioAgenda(int idUsuario)
+    {
+      var css = @"<style>html,body{height:100%}body{margin:0;background:linear-gradient(45deg,#49a09d,#5f2c82);font-family:sans-serif;font-weight:100}.container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}table{width:800px;border-collapse:collapse;overflow:hidden;box-shadow:0 0 20px rgba(0,0,0,.1)}th,td{padding:15px;background-color:rgba(255,255,255,.2);color:#fff}th{text-align:left}thead{th{background-color:#55608f}}tbody{tr{&:hover{background-color:rgba(255,255,255,.3)}}td{position:relative;&:hover{&:before{content:"";position:absolute;left:0;right:0;top:-9999px;bottom:-9999px;background-color:rgba(255,255,255,.2);z-index:-1}}}}</style>";
+      var html = RetornaHtmlRelatorioAgenda(idUsuario);
 
-            GlobalSettings globalSettings = new GlobalSettings();
-            globalSettings.ColorMode = ColorMode.Color;
-            globalSettings.Orientation = Orientation.Portrait;
-            globalSettings.PaperSize = PaperKind.A4;
-            globalSettings.Margins = new MarginSettings { Top = 25, Bottom = 25 };
-            ObjectSettings objectSettings = new ObjectSettings();
-            objectSettings.PagesCount = true;
-            objectSettings.HtmlContent = html;
-            WebSettings webSettings = new WebSettings();
-            webSettings.DefaultEncoding = "utf-8";
-            //HeaderSettings headerSettings = new HeaderSettings();
-            //headerSettings.FontSize = 15;
-            //headerSettings.FontName = "Ariel";
-            //headerSettings.Right = "Page [page] of [toPage]";
-            //headerSettings.Line = true;
+      GlobalSettings globalSettings = new GlobalSettings();
+      globalSettings.ColorMode = ColorMode.Color;
+      globalSettings.Orientation = Orientation.Portrait;
+      globalSettings.PaperSize = PaperKind.A4;
+      globalSettings.Margins = new MarginSettings { Top = 25, Bottom = 25 };
+      ObjectSettings objectSettings = new ObjectSettings();
+      objectSettings.PagesCount = true;
+      objectSettings.HtmlContent = html;
+      WebSettings webSettings = new WebSettings();
+      webSettings.DefaultEncoding = "utf-8";
+      //HeaderSettings headerSettings = new HeaderSettings();
+      //headerSettings.FontSize = 15;
+      //headerSettings.FontName = "Ariel";
+      //headerSettings.Right = "Page [page] of [toPage]";
+      //headerSettings.Line = true;
 
-            FooterSettings footerSettings = new FooterSettings();
-            footerSettings.FontSize = 12;
-            footerSettings.FontName = "Trebuchet MS";
-            footerSettings.Right = "Page [page] of [toPage]";
-            //footerSettings.Line = true;
-            //objectSettings.HeaderSettings = headerSettings;
-            objectSettings.FooterSettings = footerSettings;
-            objectSettings.WebSettings = webSettings;
-            HtmlToPdfDocument htmlToPdfDocument = new HtmlToPdfDocument()
-            {
-                GlobalSettings = globalSettings,
-                Objects = { objectSettings },
-            };
-            return _converter.Convert(htmlToPdfDocument);
-        }
+      FooterSettings footerSettings = new FooterSettings();
+      footerSettings.FontSize = 12;
+      footerSettings.FontName = "Trebuchet MS";
+      footerSettings.Right = "Page [page] of [toPage]";
+      //footerSettings.Line = true;
+      //objectSettings.HeaderSettings = headerSettings;
+      objectSettings.FooterSettings = footerSettings;
+      objectSettings.WebSettings = webSettings;
+      HtmlToPdfDocument htmlToPdfDocument = new HtmlToPdfDocument()
+      {
+        GlobalSettings = globalSettings,
+        Objects = { objectSettings },
+      };
+      return _converter.Convert(htmlToPdfDocument);
+    }
 
 
-        private string GeraHtml()
-        {
-            return @"<html>
+    private string GeraHtml()
+    {
+      return @"<html>
 
                 <head>
                 <style>
@@ -192,35 +192,50 @@ position: relative;
                 </div>
                 </body>
                 </html>";
-        }
+    }
+
+    private string GetTipoEvento(string tipoEvento)
+    {
+      switch (tipoEvento)
+      {
+        case "1":
+          return "Medicamento";
+        case "2":
+          return "Rotina";
+        case "3":
+          return "Terapia";
+        case "4":
+          return "Visita médica";
+        default:
+          return "Eventos em gerais";
+      }
+    }
+
+    private string RetornaHtmlRelatorioAgenda(int idUsuario)
+    {
+      string produtos = "";
+
+      //var repasse = _financeiroService.ListarItensRepasseFinanceiro(idEscala, idSocio).ToList();//_bll.ListarItensRepasseFinanceiro(idEscala,idSocio);
+      var calendarios = _calendarioService.GetCalendarioUsuario(idUsuario);
+      foreach (var item in calendarios)
+      {
+        produtos = produtos +
+            "<tr>" +
+                "<td>" + item.DataHora + "</td>" +
+                "<td>" + GetTipoEvento(item.TipoEvento) + "</td>" +
+                "<td>" + item.Anotacao + "</td>" +
+            "</tr>";
+      }
+      string email = BuscaHtml()
+          .Replace("@nome", "Jackson")
+          .Replace("@calendarios", produtos);
 
 
-
-        private string RetornaHtmlRelatorioAgenda(int idUsuario)
-        {
-            string produtos = "";
-
-            //var repasse = _financeiroService.ListarItensRepasseFinanceiro(idEscala, idSocio).ToList();//_bll.ListarItensRepasseFinanceiro(idEscala,idSocio);
-            var calendarios = _calendarioService.GetCalendarioUsuario(idUsuario);
-            foreach (var item in calendarios)
-            {
-                produtos = produtos +
-                    "<tr>" +
-                        "<td>" + item.DataHoraEvento + "</td>" +
-                        "<td>" + item.TipoEvento + "</td>" +
-                        "<td>" + item.Anotacoes + "</td>" +
-                    "</tr>";
-            }
-            string email = BuscaHtml()
-                .Replace("@nome", "Jackson")
-                .Replace("@calendarios", produtos);
-
-
-            return email;
-        }
-        private string BuscaHtml()
-        {
-            return @"<html>
+      return email;
+    }
+    private string BuscaHtml()
+    {
+      return @"<html>
 
                 <head>
                 <style>
@@ -328,6 +343,6 @@ position: relative;
                 
                 </body>
                 </html>";
-        }
     }
+  }
 }

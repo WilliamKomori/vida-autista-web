@@ -23,12 +23,15 @@ public class CalendarioEntity {
   @Column(name = "idUsuario")
   private Integer idUsuario;
 
+  @Column(name = "nome")
+  private String nome;
+
   @Column(name = "dataHoraEvento")
   private Date dataHoraEvento;
 
   @Column(name = "anotacoes")
   private String anotacoes;
 
-  @Column(name = "tipoEvento")
+  @Column(name = "tipo_evento")
   private String tipoEvento;
 }

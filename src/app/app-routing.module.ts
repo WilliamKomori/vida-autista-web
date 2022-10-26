@@ -32,7 +32,7 @@ import { IconsBoxiconsComponent } from './components/icons-boxicons/icons-boxico
 import { AgendaComponent } from './agenda/agenda.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 
-const routes: Routes = [  
+const routes: Routes = [
 { path: '', redirectTo: "/home", pathMatch: "full"},
 { path: 'home', component: HomeComponent},
 { path: 'contato', component: ContatoComponent},

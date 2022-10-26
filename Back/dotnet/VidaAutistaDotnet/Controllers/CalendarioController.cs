@@ -159,10 +159,7 @@ namespace VidaAutistaDotnet.API.Controllers
         public IActionResult GetRelatorioAgenda(int idUsuario)
         {
             var pdfFile = _reportService.GetRelatorioAgenda(idUsuario);
-            return File(pdfFile,
-            "application/octet-stream", "SimplePdf.pdf");
+            return File(pdfFile, "application/octet-stream", "SimplePdf.pdf");
         }
-
-
     }
 }

@@ -12,7 +12,7 @@ namespace VidaAutistaDotnet.Infra.Data
   {
     public IDbConnection Connection()
     {
-      return new MySqlConnection("Server=localhost;Database=vidaautista;Uid=root;Pwd=root;");
+      return new MySqlConnection("Server=localhost;Database=vidaautista;Uid=root;");
     }
   }
 }

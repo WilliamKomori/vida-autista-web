@@ -80,7 +80,9 @@ namespace VidaAutistaDotnet.Application.Services
 
     public CalendarioDTO Update(CalendarioDTO objeto)
     {
-      throw new NotImplementedException();
+      var calendario = _mapper.Map<Calendario>(objeto);
+      var result = _repository.Update(calendario);
+      return _mapper.Map<CalendarioDTO>(result);
     }
 
 
