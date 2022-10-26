@@ -89,7 +89,7 @@ import { AnotacoesComponent } from './anotacoes/anotacoes.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
