@@ -42,35 +42,40 @@ testem.log
 Thumbs.db
 
 #BACK DOTNET
-/Back/dotnet/*/*.swp
-/Back/dotnet/*/*.*~
-/Back/dotnet/*/project.lock.json
-/Back/dotnet/*/.DS_Store
-/Back/dotnet/*/*.pyc
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
 
 # Visual Studio Code
-/Back/dotnet/*/.vscode
+.vscode
+
+# Rider
+.idea
 
 # User-specific files
-/Back/dotnet/*/*.suo
-/Back/dotnet/*/*.user
-/Back/dotnet/*/*.userosscache
-/Back/dotnet/*/*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 # Build results
-/Back/dotnet/*/[Dd]ebug/
-/Back/dotnet/*/[Dd]ebugPublic/
-/Back/dotnet/*/[Rr]elease/
-/Back/dotnet/*/[Rr]eleases/
-/Back/dotnet/*/x64/
-/Back/dotnet/*/x86/
-/Back/dotnet/*/build/
-/Back/dotnet/*/bld/
-/Back/dotnet/*/[Bb]in/
-/Back/dotnet/*/[Oo]bj/
-/Back/dotnet/*/msbuild.log
-/Back/dotnet/*/msbuild.err
-/Back/dotnet/*/msbuild.wrn
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
 
 # Visual Studio 2015
-/Back/dotnet/.vs/
+.vs/
