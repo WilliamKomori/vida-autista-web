@@ -20,6 +20,7 @@ export class JornadaAcompanhamentoComponent implements OnInit {
   observacao!: string;
   dataObservacao!: string;
   faseFinalizada!: boolean;
+  faseFinalizadaSelect!: number;
   now = new Date();
   idFase! : number;
   _observacoes! : string;
@@ -71,11 +72,20 @@ export class JornadaAcompanhamentoComponent implements OnInit {
   }
 
   insereAnotacao(){
+
     this.nota.observacao = this.observacao;
     this.nota.dataObservacao = this.dataObservacao;
-    this.nota.faseFinalizada =  true;
     this.nota.idFase = this.idFase;
     this.nota.idUsuario = this.usuario.idUsuario;
+
+    if(this.faseFinalizadaSelect == 2){
+      this.nota.faseFinalizada = true;
+    }
+    else{
+      this.nota.faseFinalizada = false;
+    }
+
+
     this.nsrv.inserirAnotacao(this.nota).subscribe(
       res =>{
         alert("Anotação Inserida com Sucesso!");

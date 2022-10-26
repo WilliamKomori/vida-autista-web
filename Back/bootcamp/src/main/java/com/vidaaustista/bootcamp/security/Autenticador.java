@@ -45,6 +45,7 @@ public class Autenticador {
                         .dataNascimento(partes[4])
                         .telefone(partes[5])
                         .imagem(partes[6])
+                        .senha(partes[7])
                         .build();
         return c;
     }

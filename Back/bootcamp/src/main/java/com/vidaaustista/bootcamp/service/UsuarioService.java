@@ -19,7 +19,7 @@ public class UsuarioService {
 
     private UsuarioMapper usuarioMapper;
 
-    public UsuarioDTO cadastrarUsuario(UsuarioDTO usuario){
+    public UsuarioDTO cadastrarUsuario(UsuarioDTO usuario) {
         usuarioMapper = new UsuarioMapperImpl();
         UsuarioEntity usuarioEntity = usuarioMapper.toEntity(usuario);
         UsuarioEntity usuarioSalvo = usuarioRepository.save(usuarioEntity);
@@ -45,7 +45,18 @@ public class UsuarioService {
             usuarioEntity.setNome(usuario.getNome());
             usuarioEntity.setTelefone(usuario.getTelefone());
             usuarioRepository.save(usuarioEntity);
-        }catch(Exception ex) {
+        } catch (Exception ex) {
+            throw new RuntimeException("Erro ao atualizar novo usuario");
+        }
+    }
+
+    public UsuarioEntity atualizarSenha(int id, UsuarioEntity usuario) {
+        try {
+            UsuarioEntity usuarioEntity = usuarioRepository.findById(id).get();
+            usuarioEntity.setSenha(usuario.getSenha());
+            return usuarioRepository.save(usuarioEntity);
+
+        } catch (Exception ex) {
             throw new RuntimeException("Erro ao atualizar novo usuario");
         }
     }

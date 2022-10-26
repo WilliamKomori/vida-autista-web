@@ -46,7 +46,7 @@ public class UsuarioDTO {
     private List<JornadaEntity> jornadas;
 
     public String toString() {
-        return idUsuario+";"+nome+";"+email+";"+dataNascimento+";"+telefone+";"+imagem;
+        return idUsuario+";"+nome+";"+email+";"+dataNascimento+";"+telefone+";"+imagem+";"+senha;
     }
 
 }
