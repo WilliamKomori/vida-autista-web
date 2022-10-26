@@ -1,12 +1,19 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
+
 :root {
 	scroll-behavior: smooth;
   }
   
   body {
-	font-family: "Open Sans", sans-serif;
+	font-family: "Poppins", sans-serif;
 	background: #f6f9ff;
 	color: #444444;
   }
@@ -22,14 +29,14 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-	font-family: "Nunito", sans-serif;
+	font-family: "Poppins", sans-serif;
   }
   
   /*--------------------------------------------------------------
   # Main
   --------------------------------------------------------------*/
   #main {
-	margin-top: 60px;
+	margin-top: 80px;
 	padding: 20px 30px;
 	transition: all 0.3s;
   }
@@ -62,7 +69,7 @@
 	right: 15px;
 	bottom: 15px;
 	z-index: 99999;
-	background: #4154f1;
+	background: #35bfff;
 	width: 40px;
 	height: 40px;
 	border-radius: 4px;
@@ -284,21 +291,22 @@
   .breadcrumb {
 	font-size: 14px;
 	font-family: "Nunito", sans-serif;
-	color: #899bbd;
+	color: #FFFFFF;
 	font-weight: 600;
+	background-image: linear-gradient(to right, #35bfff , #4f65ff);
   }
   .breadcrumb a {
-	color: #899bbd;
+	color: #FFFFFF;
 	transition: 0.3s;
   }
   .breadcrumb a:hover {
-	color: #51678f;
+	color: #FFFFFF;
   }
   .breadcrumb .breadcrumb-item::before {
-	color: #899bbd;
+	color: #FFFFFF;
   }
   .breadcrumb .active {
-	color: #51678f;
+	color: #FFFFFF;
 	font-weight: 600;
   }
   
@@ -345,7 +353,7 @@
   .header {
 	transition: all 0.5s;
 	z-index: 997;
-	height: 60px;
+	height: 80px;
 	box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
 	background-color: #fff;
 	padding-left: 20px;
@@ -521,13 +529,13 @@
   --------------------------------------------------------------*/
   .sidebar {
 	position: fixed;
-	top: 60px;
+	top: 80px;
 	left: 0;
 	bottom: 0;
 	width: 300px;
 	z-index: 996;
 	transition: all 0.3s;
-	padding: 20px;
+	/* padding: 20px; */
 	overflow-y: auto;
 	scrollbar-width: thin;
 	scrollbar-color: #aab7cf transparent;
@@ -591,31 +599,31 @@
 	display: flex;
 	align-items: center;
 	font-size: 15px;
-	font-weight: 600;
-	color: #4154f1;
+	font-weight: 500;
+	color: #969ba0;
 	transition: 0.3;
-	background: #f6f9ff;
-	padding: 10px 15px;
+	/* background: #f6f9ff; */
+	padding: 20px 25px;
 	border-radius: 4px;
   }
   .sidebar-nav .nav-link i {
 	font-size: 16px;
-	margin-right: 10px;
-	color: #4154f1;
+	margin-right: 15px;
+	color: #969ba0;
   }
   .sidebar-nav .nav-link.collapsed {
-	color: #012970;
+	color: #969ba0;
 	background: #fff;
   }
   .sidebar-nav .nav-link.collapsed i {
 	color: #899bbd;
   }
   .sidebar-nav .nav-link:hover {
-	color: #4154f1;
+	color: #3598FE;
 	background: #f6f9ff;
   }
   .sidebar-nav .nav-link:hover i {
-	color: #4154f1;
+	color: #3598FE;
   }
   .sidebar-nav .nav-link .bi-chevron-down {
 	margin-right: 0;
@@ -634,7 +642,7 @@
 	align-items: center;
 	font-size: 14px;
 	font-weight: 600;
-	color: #012970;
+	color: #969ba0;
 	transition: 0.3;
 	padding: 10px 0 10px 40px;
 	transition: 0.3s;
@@ -646,10 +654,10 @@
 	border-radius: 50%;
   }
   .sidebar-nav .nav-content a:hover, .sidebar-nav .nav-content a.active {
-	color: #4154f1;
+	color: #3598FE;
   }
   .sidebar-nav .nav-content a.active i {
-	background-color: #4154f1;
+	background-color: #3598FE;
   }
   
   /*--------------------------------------------------------------
