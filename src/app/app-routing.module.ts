@@ -4,6 +4,7 @@ import { ContatoComponent } from './contato/contato.component';
 import { FaqComponent } from './faq/faq.component';
 import { RouterModule, Routes } from '@angular/router';
 import { JornadaComponent } from './jornada/jornada.component';
+import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { AccordionComponent } from './components/accordion/accordion.component';
@@ -29,18 +30,22 @@ import { ChartsApexchartsComponent } from './components/charts-apexcharts/charts
 import { IconsBootstrapComponent } from './components/icons-bootstrap/icons-bootstrap.component';
 import { IconsRemixComponent } from './components/icons-remix/icons-remix.component';
 import { IconsBoxiconsComponent } from './components/icons-boxicons/icons-boxicons.component';
-import { CalendarioComponent } from './calendario/calendario.component';
+import { AgendaComponent } from './agenda/agenda.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
+import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 
-const routes: Routes = [  
+const routes: Routes = [
 { path: '', redirectTo: "/home", pathMatch: "full"},
 { path: 'home', component: HomeComponent},
 { path: 'contato', component: ContatoComponent},
 { path: 'faq', component: FaqComponent},
 { path: 'jornada', component: JornadaComponent},
+{ path: 'jornada-acompanhamento', component: JornadaAcompanhamentoComponent},
 { path: 'dashboard', component: DashboardComponent},
-{ path: 'calendario', component: CalendarioComponent},
+{ path: 'agenda', component: AgendaComponent},
+{ path: 'agenda-paciente/:id', component: AgendaComponent},
 { path: 'meu-perfil', component: MeuPerfilComponent},
+{ path: 'anotacoes', component: AnotacoesComponent},
 
 
 

@@ -1,0 +1,62 @@
+<main id="main" class="main">
+    <section class="section">
+
+        <div class="split left">
+            <div class="centered">
+                <div *ngIf=" _jornadas == null">
+                    <div *ngFor="let item of jornadas">
+
+                        <div *ngIf=" item.faseFinalizada == false ">
+                            <ul>
+                              <li class="item_false" >
+                                <button (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
+                            </ul>
+                        </div>
+                        <div *ngIf=" item.faseFinalizada == true ">
+                            <ul>
+                              <li class="item_true">
+                                <button  (click)="criaBloco(item.idFase);">{{item.idFase}} - {{item.textoFase}}</button>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="split right" *ngIf="_observacoes != null">
+            <div class="centered">
+                
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Observação</label>
+                      <textarea class="form-control" aria-label="With textarea" [(ngModel)]="observacao"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Data Observação</label>
+                      <input type="datetime-local" class="form-control" id="exampleInputPassword1" placeholder="Data" [(ngModel)]="dataObservacao"
+                      [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                <div class="form-group">
+                        <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
+                        <label class="form-check-label" for="exampleCheck1">Fase Finalizada?</label>
+                        <select [(ngModel)]="faseFinalizadaSelect" [ngModelOptions]="{standalone: true}" class="custom-select custom-select-md w-auto mr-1">
+                          <option value="1">Não</option>
+                          <option value="2">Sim</option>
+                        </select>
+                        <br><br>
+                        <span class="input-icon input-icon-sm ml-auto w-auto">
+                            <button type="button" class="btn btn-info btn-lg" (click)="insereAnotacao()">Incluir</button>
+                        </span>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
