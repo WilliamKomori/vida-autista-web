@@ -14,7 +14,7 @@
          </ol>
          <div>
             <button class="btn btn-primary m-1" (click)="exportar()">Exportar</button>
-            <button class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
+            <button *ngIf="podeEditar()" class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
          </div>
       </nav>
    </div>

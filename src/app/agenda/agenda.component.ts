@@ -288,7 +288,8 @@ export class AgendaComponent implements OnInit {
   }
 
   exportar(): void {
-    this.agendaService.GerarPDF(AgendaComponent.usuario.idUsuario).subscribe(pdf => {
+    let id = this.id ? this.id : AgendaComponent.usuario.idUsuario;
+    this.agendaService.GerarPDF(id).subscribe(pdf => {
       let url = window.URL.createObjectURL(pdf);
       let a = document.createElement('a');
       document.body.appendChild(a);
@@ -302,8 +303,10 @@ export class AgendaComponent implements OnInit {
   }
 
   compartilhar(): void {
-    (document.getElementById("textoCompartilhar") as HTMLInputElement).value = `http://${window.location.host}/agenda-paciente/${this.id}`;
-    (document.getElementById("linkCompartilhar") as HTMLInputElement).setAttribute("href", `https://api.whatsapp.com/send?text=Acesse minha agenda em http://${window.location.host}/agenda-paciente/${this.id}`);
+    let id = AgendaComponent.usuario.idUsuario;
+    let link = `http://${window.location.host}/agenda-paciente/${id}`;
+    (document.getElementById("textoCompartilhar") as HTMLInputElement).value = link;
+    (document.getElementById("linkCompartilhar") as HTMLInputElement).setAttribute("href", `https://api.whatsapp.com/send?text=Acesse minha agenda em ${link}`);
     $('#modalCompartilhar').modal("show");
   }
 
