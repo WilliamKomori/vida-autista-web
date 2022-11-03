@@ -1,10 +1,10 @@
 <main id="main" class="main">
-   <div class="alert alert-danger fade alert-fixed" role="alert">
+   <div class="alert fade alert-fixed" role="alert">
       <span id="alerta"></span>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
+   </div>
    <div class="pagetitle">
       <h1>Agenda</h1>
       <nav class="mt-2 d-flex justify-content-between align-items-center">
@@ -12,7 +12,10 @@
             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
             <li class="breadcrumb-item">Agenda</li>
          </ol>
-         <button class="btn btn-primary" (click)="exportar()">Exportar</button>
+         <div>
+            <button class="btn btn-primary m-1" (click)="exportar()">Exportar</button>
+            <button class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
+         </div>
       </nav>
    </div>
    <section class="section">
@@ -51,8 +54,27 @@
                <textarea id="anotacao" class="form-control"></textarea>
             </div>
             <div class="modal-footer d-flex justify-content-between flex-row-reverse">
-               <button *ngIf="exibirBotaoParaExcluir()" type="button" class="btn btn-danger order-2" (click)="excluirEvento()">Deletar</button>
-               <button type="button" class="btn btn-primary order-1" (click)="salvarEvento()">Salvar</button>
+               <button *ngIf="exibirBotaoParaExcluir() && podeEditar()" type="button" class="btn btn-danger order-2"
+                  (click)="excluirEvento()">Deletar</button>
+               <button *ngIf="podeEditar()" type="button" class="btn btn-primary order-1"
+                  (click)="salvarEvento()">Salvar</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="modal fade" id="modalCompartilhar" tabindex="-1">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               <h5 class="modal-title">Compartilhe sua agenda!</h5>
+               <div class="d-flex mt-2">
+                  <input id="textoCompartilhar" class="form-control mr-1" disabled>
+                  <input type="button" class="btn btn-secondary" (click)="copiarLink()" value="Copiar">
+               </div>
+               <a id="linkCompartilhar" class="btn btn-success mt-2" href="">Compartilhar no WhatsApp</a>
             </div>
          </div>
       </div>

@@ -10,6 +10,7 @@ import { UsuarioService } from '../service/usuario.service';
 import { Globals } from '../model/Globals';
 import { Evento } from '../model/Evento';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 defineFullCalendarElement();
 
@@ -21,23 +22,36 @@ declare var $: any;
   providers: [Globals]
 })
 export class AgendaComponent implements OnInit {
+  private id!: number;
 
   private static usuario: Usuario;
   private selecionouUmaData: boolean = false;
   private static idAtual: number = 0;
   private static calendarApi: any;
   private static podeExcluir: boolean = false;
+  private static editavel: boolean = true;
+
   exibirBotaoParaExcluir(): boolean {
     return AgendaComponent.podeExcluir;
+  }
+
+  podeEditar(): boolean {
+    return AgendaComponent.editavel;
   }
 
   @ViewChild('calendar', { read: ElementRef }) calendarRef!: ElementRef<FullCalendarElement>;
 
   constructor(
+    private route: ActivatedRoute,
     private agendaService: AgendaService,
     private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = parseInt(params.get("id")!);
+      if (this.id) AgendaComponent.editavel = false;
+    });
+
     if (localStorage.getItem("MyToken")) {
       let currentUser = localStorage.getItem('MyToken') || '';
 
@@ -47,15 +61,15 @@ export class AgendaComponent implements OnInit {
           AgendaComponent.usuario = new Usuario();
           AgendaComponent.usuario.nome = res.nome;
           AgendaComponent.usuario.idUsuario = res.idUsuario;
-          this.recuperarEventos();
+          this.recuperarEventos(this.id);
         },
         err => {
           alert("Erro ao inserir");
         });
     }
     $("full-calendar").ready(() => {
-      $('.fc-prev-button').click(() => this.recuperarEventos());
-      $('.fc-next-button').click(() => this.recuperarEventos());
+      $('.fc-prev-button').click(() => this.recuperarEventos(this.id));
+      $('.fc-next-button').click(() => this.recuperarEventos(this.id));
     });
   }
 
@@ -63,29 +77,31 @@ export class AgendaComponent implements OnInit {
     AgendaComponent.calendarApi = this.calendarRef.nativeElement.getApi();
   }
 
-  exibirAlerta(mensagem: string) {
+  exibirAlerta(mensagem: string, tipo: string = "danger") {
     $('#alerta').text(mensagem);
     $('.alert').addClass('show');
+    $('.alert').addClass(`alert-${tipo}`);
     setTimeout(() => {
       $('.alert').removeClass('show');
+      $('.alert').removeClass(`alert-${tipo}`);
     }, 1500);
   }
 
   async pegarEvento(id: number) {
-    try{
+    try {
       return await firstValueFrom(this.agendaService.Selecionar(id));
-    }catch{
+    } catch {
       return null;
     }
   }
 
-  recuperarEventos(): void {
-    this.agendaService.SelecionarTodosEventos(AgendaComponent.usuario.idUsuario)
+  recuperarEventos(id?: number): void {
+    this.agendaService.SelecionarTodosEventos(id ? id : AgendaComponent.usuario.idUsuario)
       .subscribe(e => {
-        var eventos = AgendaComponent.calendarApi.getEvents(); 
+        var eventos = AgendaComponent.calendarApi.getEvents();
         var len = eventos.length;
         for (var i = 0; i < len; i++) {
-            eventos[i].remove(); 
+          eventos[i].remove();
         }
         AgendaComponent.calendarApi.addEventSource({ events: e.map(e => ({ id: `${e.id}`, title: e.nome, start: e.dataHora })) });
       });
@@ -94,9 +110,9 @@ export class AgendaComponent implements OnInit {
   async criarEvento(evento: Evento) {
     if (!this.validarEvento(evento))
       return null;
-    try{
+    try {
       return await firstValueFrom(this.agendaService.Criar(evento));
-    }catch{
+    } catch {
       return null;
     }
   }
@@ -104,9 +120,9 @@ export class AgendaComponent implements OnInit {
   async atualizarEvento(evento: Evento) {
     if (!this.validarEvento(evento))
       return null;
-    try{
+    try {
       return await firstValueFrom(this.agendaService.Editar(evento));
-    }catch{
+    } catch {
       return null;
     }
   }
@@ -145,6 +161,11 @@ export class AgendaComponent implements OnInit {
       }, 200);
     },
     dateClick: async (evt: any) => {
+      if (!this.podeEditar()) {
+        this.exibirAlerta("Não é permitido fazer alterações na agenda.");
+        return;
+      }
+
       this.limparCampos();
       this.selecionouUmaData = true;
 
@@ -201,6 +222,11 @@ export class AgendaComponent implements OnInit {
   }
 
   async salvarEvento() {
+    if (!this.podeEditar()) {
+      this.exibirAlerta("Não é permitido fazer alterações na agenda.");
+      return;
+    }
+
     let calendarApi = AgendaComponent.calendarApi;
     let id: any = (document.getElementById("id") as HTMLInputElement).value;
     let data: any = (document.getElementById("dataInicio") as HTMLInputElement).value;
@@ -245,23 +271,23 @@ export class AgendaComponent implements OnInit {
     $('#basicModal').modal("hide");
   }
 
-  async excluirEvento(){
+  async excluirEvento() {
     let calendarApi = AgendaComponent.calendarApi;
     let id: any = (document.getElementById("id") as HTMLInputElement).value;
     let evento = calendarApi.getEventById(id);
 
-    try{
+    try {
       await firstValueFrom(this.agendaService.Remover(id));
 
       evento.remove();
       $('#basicModal').modal("hide");
       this.limparCampos();
-    }catch{
+    } catch {
       this.exibirAlerta("Falha ao remover evento.");
     }
   }
 
-  exportar(): void{
+  exportar(): void {
     this.agendaService.GerarPDF(AgendaComponent.usuario.idUsuario).subscribe(pdf => {
       let url = window.URL.createObjectURL(pdf);
       let a = document.createElement('a');
@@ -273,5 +299,21 @@ export class AgendaComponent implements OnInit {
       window.URL.revokeObjectURL(url);
       a.remove();
     });
+  }
+
+  compartilhar(): void {
+    (document.getElementById("textoCompartilhar") as HTMLInputElement).value = `http://${window.location.host}/agenda-paciente/${this.id}`;
+    (document.getElementById("linkCompartilhar") as HTMLInputElement).setAttribute("href", `https://api.whatsapp.com/send?text=Acesse minha agenda em http://${window.location.host}/agenda-paciente/${this.id}`);
+    $('#modalCompartilhar').modal("show");
+  }
+
+  copiarLink(): void {
+    var link = (document.getElementById("textoCompartilhar") as HTMLInputElement);
+    link.removeAttribute("disabled");
+    link.select();
+    link.setSelectionRange(0, 99999);
+    link.setAttribute("disabled", "");
+    document.execCommand("copy");
+    this.exibirAlerta("Link copiado!", "success");
   }
 }

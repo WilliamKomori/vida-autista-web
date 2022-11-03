@@ -40,6 +40,7 @@ const routes: Routes = [
 { path: 'jornada', component: JornadaComponent},
 { path: 'dashboard', component: DashboardComponent},
 { path: 'agenda', component: AgendaComponent},
+{ path: 'agenda-paciente/:id', component: AgendaComponent},
 { path: 'meu-perfil', component: MeuPerfilComponent},
 
 
