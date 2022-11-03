@@ -1,0 +1,12 @@
+.nomeEvento:focus{
+    box-shadow: none;
+}
+
+.alert-fixed {
+    position:fixed; 
+    top: 2rem; 
+    right: 1rem; 
+    width: 30%;
+    z-index:9999; 
+    border-radius:0px
+}
