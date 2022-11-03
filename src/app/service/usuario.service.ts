@@ -22,8 +22,12 @@ export class UsuarioService {
     return this.http.post("http://localhost:8080/user/new",usuario);
   }
 
-  public atualiza(usuario: Usuario){
-    return this.http.put("http://localhost:8080/usuario", usuario);
+  public atualiza(usuario: Usuario, id: number){
+    return this.http.put("http://localhost:8080/user/alterar/"+id,usuario);
+  }
+
+  public atualizaSenha(usuario: Usuario, id: number){
+    return this.http.put("http://localhost:8080/user/alterar/"+ id +"/senha", usuario);
   }
 
   public autenticar(usuario: Usuario) {
@@ -32,24 +36,6 @@ export class UsuarioService {
 
   public buscarInfo(token: string){
     return this.http.get("http://localhost:8080/user/info?token="+token);
-  }
-
-  public  insereInfoUsuario(infousuario:InfoUsuario){
-    return this.http.post("http://localhost:8080/infoUsuario/novo",infousuario);
-  }
-
-  public recuperaInfoUsuario(id: number){
-    return this.http.get("http://localhost:8080/infoUsuario/"+id);
-
-  }
-
-  public recuperaUsuario(id: number){
-    return this.http.get("http://localhost:8080/usuario/"+id);
-
-  }
-
-  public alteraInfoUsuario(infousuario: InfoUsuario){
-    return this.http.put("http://localhost:8080/infoUsuario/alterar", infousuario);
   }
 
 }

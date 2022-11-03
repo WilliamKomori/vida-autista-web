@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "f2cf7f25-e086-4f76-a3f2-498435804426",
+		"name": "Bootcamp Impacta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Felipe3\",\r\n    \"data_nascimento\": \"1995-07-17\",\r\n    \"telefone\": \"112345678\",\r\n    \"email\": \"felipe3@grupoe.com\",\r\n    \"senha\": \"123\",\r\n    \"flag_profissional_saude\": true,\r\n    \"documento_identificacao\": \"12345687\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/info?token=2A56494441415554495354413B333B46656C697065204D3B66656C6970653340677275706F652E636F6D",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"info"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "2A56494441415554495354413B333B46656C697065204D3B66656C6970653340677275706F652E636F6D"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Felipe M\",\r\n    \"data_nascimento\": \"1995-07-17\",\r\n    \"telefone\": \"112345678\",\r\n    \"email\": \"felipe3@grupoe.com\",\r\n    \"senha\": \"1234\",\r\n    \"flag_profissional_saude\": true,\r\n    \"documento_identificacao\": \"12345687\",\r\n    \"jornadas\": [\r\n        {\r\n            \"idFase\": 1,\r\n            \"textoFase\": \"Medico 1\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 2,\r\n            \"textoFase\": \"Medico 2\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 3,\r\n            \"textoFase\": \"Medico 3\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 4,\r\n            \"textoFase\": \"Medico 4\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 5,\r\n            \"textoFase\": \"Medico 5\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 6,\r\n            \"textoFase\": \"Medico 6\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 7,\r\n            \"textoFase\": \"Medico 7\",\r\n            \"faseFinalizada\": false\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/new",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Observação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"observacao\": \"teste2\",\r\n    \"dataObservacao\": \"teste2\",\r\n    \"faseFinalizada\": true,\r\n    \"idFase\": 2,\r\n    \"idUsuario\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/notes/new",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Jornada por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/jornada/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jornada",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Observações por Id Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/notes/all/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"all",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Observações por Id Usuario e Id Fase",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/notes/all/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"notes",
+						"all",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Usuario por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Usuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Felipe M\",\r\n    \"dataNascimento\": \"1995-07-17\",\r\n    \"telefone\": \"1123456789\",\r\n    \"email\": \"felipe@gmail.com\",\r\n    \"senha\": \"123\",\r\n    \"flagProfissionalSaude\": true,\r\n    \"documentoIdentificacao\": \"12345687\",\r\n    \"jornadas\": [\r\n        {\r\n            \"idFase\": 1,\r\n            \"textoFase\": \"Medico 1\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 2,\r\n            \"textoFase\": \"Medico 2\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 3,\r\n            \"textoFase\": \"Medico 3\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 4,\r\n            \"textoFase\": \"Medico 4\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 5,\r\n            \"textoFase\": \"Medico 5\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 6,\r\n            \"textoFase\": \"Medico 6\",\r\n            \"faseFinalizada\": false\r\n        },\r\n        {\r\n            \"idFase\": 7,\r\n            \"textoFase\": \"Medico 7\",\r\n            \"faseFinalizada\": false\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/alterar/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"alterar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
