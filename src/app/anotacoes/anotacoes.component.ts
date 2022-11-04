@@ -14,6 +14,10 @@ import { Notes } from '../model/Notes';
 })
 export class AnotacoesComponent implements OnInit {
 
+  dtOptionsGrid = {
+    
+  }
+
   idFase! : number;
   selectedJornada! : number;
   _observacoes!: Notes[];

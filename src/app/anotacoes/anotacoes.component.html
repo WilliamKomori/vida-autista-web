@@ -1,4 +1,4 @@
-<main id="main" class="main">
+<!-- <main id="main" class="main">
     <section class="section">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
@@ -6,9 +6,7 @@
         <div class="main-body p-0">
             <div class="inner-wrapper">
        
-                <!-- Inner main -->
                 <div class="inner-main">
-                    <!-- Inner main header -->
                     <p class="titulo">Filtrar por Fase:</p>
                     <div class="inner-main-header">
                         <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
@@ -27,11 +25,7 @@
                             <button class="btn btn-info btn-lg" id="botaoLimpar" (click)="listarAnotacoes()">Limpar Filtro</button>
 
                     </div>
-                    <!-- /Inner main header -->
-        
-                    <!-- Inner main body -->
-        
-                    <!-- Forum List -->
+    
                     <div class="inner-main-body p-2 p-sm-3 collapse forum-content show" *ngIf=" _observacoes == null">
                         <div class="card mb-2" *ngFor="let item of observacoes">
                             <div class="card-body p-2 p-sm-3">
@@ -48,14 +42,53 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /Forum List -->
-                    <!-- /Inner main body -->
                 </div>
-                <!-- /Inner main -->
             </div>
         </div>
         </div>
     </section>
-</main>
+</main> -->
 
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Data Tables</h1>
+       <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/">Jonada</a></li>
+            <li class="breadcrumb-item">Anotações</li>
+         </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Datatables</h5>
+                   <p>Add lightweight datatables to your project.</p>
+                   <table class="table datatable">
+                      <thead>
+                         <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Observação</th>
+                         </tr>
+                      </thead>
+                      <tbody *ngFor="let item of observacoes">
+                         <tr>
+                            <th scope="row">1</th>
+                            <td>{{usuario.nome}}</td>
+                            <td>{{item.dataObservacao }}</td>
+                            <td>{{item.observacao}}</td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
 

@@ -27,6 +27,7 @@
     "jquery": "^3.6.1",
     "ngx-owl-carousel-o": "^14.0.1",
     "ngx-slick-carousel": "^0.6.0",
+    "ngx-toastr": "^15.2.1",
     "primeng": "^14.1.2",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",

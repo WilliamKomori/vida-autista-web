@@ -7,6 +7,8 @@ import { JornadaService } from '../service/jornada.service';
 import { Jornada } from '../model/Jornada';
 import { AnotacoesService } from '../service/anotacoes.service';
 import { Notes } from '../model/Notes';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-jornada-acompanhamento',
@@ -21,6 +23,7 @@ export class JornadaAcompanhamentoComponent implements OnInit {
   dataObservacao!: string;
   faseFinalizada!: boolean;
   faseFinalizadaSelect!: number;
+  nomeClasse!: string;
   now = new Date();
   idFase! : number;
   _observacoes! : string;
@@ -28,9 +31,16 @@ export class JornadaAcompanhamentoComponent implements OnInit {
   _jornadas!: Jornada[];
   jornadas!: Jornada[];
   currentUser! : string;
+  cadastroForm!: FormGroup;
 
-
-  constructor(public router: Router, public srv: UsuarioService, public jsrv: JornadaService, public nsrv: AnotacoesService) { }
+  constructor(
+    public router: Router, 
+    public srv: UsuarioService, 
+    public jsrv: JornadaService, 
+    public nsrv: AnotacoesService,
+    private toastr: ToastrService,
+    private fb: FormBuilder 
+    ) { }
 
   ngOnInit() {
 
@@ -49,15 +59,25 @@ export class JornadaAcompanhamentoComponent implements OnInit {
         },
       err => {
         console.log(err);
-        alert("Erro ao carregar informações do usuario");
+        this.toastr.error("Erro ao carregar informações do usuario");
       });
 
   }else{
     this.router.navigate(['/home']);
-    alert("Você Precisa estar conectado para acessar essa página!")
+    this.toastr.error("Você Precisa estar conectado para acessar essa página!")
     console.log(localStorage.getItem);
   }
 
+  this.criarFormulario();
+
+  }
+
+  criarFormulario(){
+    this.cadastroForm = this.fb.group({
+      observacao: [''],
+      dataDaObservacao: [''],
+      fase: ['']
+    })
   }
 
   listarJornada(id: number){
@@ -73,27 +93,34 @@ export class JornadaAcompanhamentoComponent implements OnInit {
 
   insereAnotacao(){
 
-    this.nota.observacao = this.observacao;
-    this.nota.dataObservacao = this.dataObservacao;
-    this.nota.idFase = this.idFase;
-    this.nota.idUsuario = this.usuario.idUsuario;
+    const param = new Notes;
+    const observacao = this.cadastroForm.get('observacao')?.value;
+    const data = this.cadastroForm.get('dataDaObservacao')?.value;
+    const fase = this.cadastroForm.get('fase')?.value;
 
-    if(this.faseFinalizadaSelect == 2){
+    if(fase == 2){
       this.nota.faseFinalizada = true;
+      this.nomeClasse = "active"
     }
     else{
       this.nota.faseFinalizada = false;
+      this.nomeClasse = ""
     }
 
+    param.observacao = observacao;
+    param.dataObservacao = data;
+    param.idFase = this.idFase;
+    param.faseFinalizada = this.nota.faseFinalizada;
+    param.idUsuario = this.usuario.idUsuario;
 
-    this.nsrv.inserirAnotacao(this.nota).subscribe(
+    this.nsrv.inserirAnotacao(param).subscribe(
       res =>{
-        alert("Anotação Inserida com Sucesso!");
-        window.location.reload();
+        this.toastr.success("Anotação Inserida com Sucesso!");
+        this.cadastroForm.reset();
       },
       err=>{
         console.log(err);
-        alert("Erro ao inserir");
+        this.toastr.error("Erro ao inserir");
       }
     )
   }
