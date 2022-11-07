@@ -30,11 +30,11 @@ import { ChartsApexchartsComponent } from './components/charts-apexcharts/charts
 import { IconsBootstrapComponent } from './components/icons-bootstrap/icons-bootstrap.component';
 import { IconsRemixComponent } from './components/icons-remix/icons-remix.component';
 import { IconsBoxiconsComponent } from './components/icons-boxicons/icons-boxicons.component';
-import { CalendarioComponent } from './calendario/calendario.component';
+import { AgendaComponent } from './agenda/agenda.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 
-const routes: Routes = [  
+const routes: Routes = [
 { path: '', redirectTo: "/home", pathMatch: "full"},
 { path: 'home', component: HomeComponent},
 { path: 'contato', component: ContatoComponent},
@@ -42,7 +42,8 @@ const routes: Routes = [
 { path: 'jornada', component: JornadaComponent},
 { path: 'jornada-acompanhamento', component: JornadaAcompanhamentoComponent},
 { path: 'dashboard', component: DashboardComponent},
-{ path: 'calendario', component: CalendarioComponent},
+{ path: 'agenda', component: AgendaComponent},
+{ path: 'agenda-paciente/:id', component: AgendaComponent},
 { path: 'meu-perfil', component: MeuPerfilComponent},
 { path: 'anotacoes', component: AnotacoesComponent},
 

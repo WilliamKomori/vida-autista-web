@@ -38,7 +38,6 @@ import { TablesDataComponent } from './components/tables-data/tables-data.compon
 import { TablesGeneralComponent } from './components/tables-general/tables-general.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TooltipsComponent } from './components/tooltips/tooltips.component';
-import { CalendarioComponent } from './calendario/calendario.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
@@ -80,7 +79,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TablesGeneralComponent,
     TabsComponent,
     TooltipsComponent,
-    CalendarioComponent,
     MeuPerfilComponent,
     JornadaAcompanhamentoComponent,
     AnotacoesComponent
