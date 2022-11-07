@@ -11,10 +11,6 @@ import { UsuarioService } from '../service/usuario.service';
   providers: [Globals]
 })
 export class JornadaComponent implements OnInit {
-
-  
-
-
   constructor(
     public router: Router, 
     public srv: UsuarioService) {}
@@ -23,11 +19,6 @@ export class JornadaComponent implements OnInit {
   }
 
   Onclick(){
-        this.router.navigate(['/jornada-acompanhamento']);
-    }
-
+    this.router.navigate(['/jornada-acompanhamento']);
   }
-
-
-
-
+}

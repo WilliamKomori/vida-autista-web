@@ -1,1 +1,82 @@
-<p>agenda works!</p>
+<main id="main" class="main">
+   <div class="alert fade alert-fixed" role="alert">
+      <span id="alerta"></span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   <div class="pagetitle">
+      <h1>Agenda</h1>
+      <nav class="mt-2 d-flex justify-content-between align-items-center">
+         <ol class="pr-5 breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item">Agenda</li>
+         </ol>
+         <div>
+            <button class="btn btn-primary m-1" (click)="exportar()">Exportar</button>
+            <button *ngIf="podeEditar()" class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
+         </div>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <full-calendar #calendar [options]='calendarOptions'></full-calendar>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class="modal fade" id="basicModal" tabindex="-1">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <input id="titulo" placeholder="Nome do evento" class="form-control border-0 nomeEvento">
+               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <input type="hidden" id="id">
+               <label for="dataInicio">Data Início</label>
+               <input id="dataInicio" type="datetime-local" class="form-control">
+               <label for="tipoEvento">Tipo</label>
+               <select id="tipoEvento" class="form-control">
+                  <option value="0">Eventos em gerais</option>
+                  <option value="1">Medicamento</option>
+                  <option value="2">Rotina</option>
+                  <option value="3">Terapia</option>
+                  <option value="4">Visita médica</option>
+               </select>
+               <label for="anotacao" class="mt-2">Anotação</label>
+               <textarea id="anotacao" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer d-flex justify-content-between flex-row-reverse">
+               <button *ngIf="exibirBotaoParaExcluir() && podeEditar()" type="button" class="btn btn-danger order-2"
+                  (click)="excluirEvento()">Deletar</button>
+               <button *ngIf="podeEditar()" type="button" class="btn btn-primary order-1"
+                  (click)="salvarEvento()">Salvar</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="modal fade" id="modalCompartilhar" tabindex="-1">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+               <h5 class="modal-title">Compartilhe sua agenda!</h5>
+               <div class="d-flex mt-2">
+                  <input id="textoCompartilhar" class="form-control mr-1" disabled>
+                  <input type="button" class="btn btn-secondary" (click)="copiarLink()" value="Copiar">
+               </div>
+               <a id="linkCompartilhar" class="btn btn-success mt-2" href="">Compartilhar no WhatsApp</a>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
