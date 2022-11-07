@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 //import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { MyToken } from '../model/MyToken';
 import { Jornada } from '../model/Jornada';
+import { ToastrService } from 'ngx-toastr';
 
 //Para funcionar o JQuery é preciso instalar as bibiliotecas a seguir:
 //npm install jquery --save
@@ -55,7 +56,10 @@ export class HomeComponent implements OnInit {
   
 
 
-  constructor(public srv: UsuarioService, private router: Router) {  this.senha = "";  }
+  constructor(
+    public srv: UsuarioService,
+    private router: Router,
+    private toastr: ToastrService) {  this.senha = "";  }
 
   ngOnInit() {
 
@@ -65,7 +69,7 @@ export class HomeComponent implements OnInit {
     
 
     if(this.email == null || this.nomeCompleto == null || this.telefone == null || this.senha == null || this.senhaRepetida == null){
-      alert("Preencha todos os campos corretamente!");
+      this.toastr.error("Preencha todos os campos corretamente!");
       
     }
     else{
@@ -131,7 +135,7 @@ export class HomeComponent implements OnInit {
     console.log("entrou no validaProfissional1");
 
     if(this.email == null || this.nomeCompletoProfissional == null || this.telefone == null || this.senha == null || this.senhaRepetida == null){
-      alert("Preencha todos os campos corretamente!");
+      this.toastr.error("Preencha todos os campos corretamente!");
       
     }
     else{
@@ -262,12 +266,12 @@ export class HomeComponent implements OnInit {
       console.log(this.usuario);
       this.srv.insere(this.usuario).subscribe(
         res =>{
-          alert("Cadastro efetuado com sucesso!");
+          this.toastr.success("Cadastro efetuado com sucesso!");
           $('#btnFecharUsuario').click();
         },
         err=>{
           console.log(err);
-          alert("Erro ao inserir");
+          this.toastr.error("Erro ao inserir");
         }
       )
 
@@ -288,12 +292,12 @@ export class HomeComponent implements OnInit {
       console.log(this.usuario);
       this.srv.insere(this.usuario).subscribe(
         res =>{
-          alert("Cadastro efetuado com sucesso!");
+          this.toastr.success("Cadastro efetuado com sucesso!");
           $('#btnFecharEmpresa').click();
         },
         err=>{
           console.log(err);
-          alert("Erro ao inserir");
+          this.toastr.error("Erro ao inserir");
         }
       )
 
@@ -314,7 +318,7 @@ export class HomeComponent implements OnInit {
           // armazeno o token no LocalStorage
           localStorage.setItem("MyToken", res.strToken);
           console.log(res.strToken);
-          alert("E-mail e senha validados com sucesso!");
+          this.toastr.success("E-mail e senha validados com sucesso!");
           this.router.navigate(['/dashboard']);
           
           $('#btnfecharLogin').click();
@@ -322,7 +326,7 @@ export class HomeComponent implements OnInit {
          // window.location.reload();
         },
         (err)=>{
-          alert("Usuário não cadastrado no sistema");
+          this.toastr.error("Usuário não cadastrado no sistema");
         }
       );
     }

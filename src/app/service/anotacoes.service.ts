@@ -10,8 +10,8 @@ export class AnotacoesService {
 
   constructor(public http: HttpClient) { }
 
-  public inserirAnotacao(note: Notes){
-    return this.http.post("http://localhost:8080/notes/new",note);
+  public inserirAnotacao(param: any){
+    return this.http.post("http://localhost:8080/notes/new",param);
   }
 
   public getAnotacaoByUser(id: number){

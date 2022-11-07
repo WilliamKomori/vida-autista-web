@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +41,8 @@ import { TooltipsComponent } from './components/tooltips/tooltips.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +88,10 @@ import { AnotacoesComponent } from './anotacoes/anotacoes.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
