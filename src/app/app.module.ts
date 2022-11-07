@@ -43,7 +43,7 @@ import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { JornadaAcompanhamentoComponent } from './jornada-acompanhamento/jornada-acompanhamento.component';
 import { AnotacoesComponent } from './anotacoes/anotacoes.component';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,

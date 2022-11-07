@@ -5,6 +5,8 @@ import { Usuario } from '../model/Usuario';
 import { UsuarioService } from '../service/usuario.service';
 import { AnotacoesService } from '../service/anotacoes.service';
 import { Notes } from '../model/Notes';
+import { DataTable } from 'simple-datatables';
+import { RecebeObsrevacoesModel } from './anotacoes.model';
 
 @Component({
   selector: 'app-anotacoes',
@@ -13,24 +15,21 @@ import { Notes } from '../model/Notes';
   providers: [Globals]
 })
 export class AnotacoesComponent implements OnInit {
-
-  dtOptionsGrid = {
-    
-  }
-
   idFase! : number;
   selectedJornada! : number;
-  _observacoes!: Notes[];
-  observacoes!: Notes[];
+  observacoes!: RecebeObsrevacoesModel[];
   usuario!: Usuario;
   currentUser! : string;
+  myTable!: any; 
+  
 
   constructor(public router: Router, public srv: UsuarioService, public nsrv: AnotacoesService) { }
 
   ngOnInit(): void {
 
-    if(localStorage.getItem("MyToken")){
+    
 
+    if(localStorage.getItem("MyToken")){
       this.currentUser = localStorage.getItem("MyToken")!;
 
       this.srv.buscarInfo(this.currentUser).subscribe(
@@ -40,30 +39,43 @@ export class AnotacoesComponent implements OnInit {
               this.usuario = new Usuario();
               this.usuario.nome = res.nome;
               this.usuario.idUsuario = res.idUsuario;
-              this.listarAnotacoes();
+              this.listarAnotacoes(this.usuario.idUsuario);
+              
+
+              setTimeout(()=>{                           // <<<---using ()=> syntax
+                this.inicioDataTables();
+            }, 1500);
         },
       err => {
         console.log(err);
         alert("Erro ao carregar informações do usuario");
       });
 
-  }else{
-    this.router.navigate(['/home']);
-    alert("Você Precisa estar conectado para acessar essa página!")
-    console.log(localStorage.getItem);
-  }
+    }else{
+      this.router.navigate(['/home']);
+      alert("Você Precisa estar conectado para acessar essa página!")
+      console.log(localStorage.getItem);
+    }
+
+    
 
   }
 
-  listarAnotacoes(){
-    this._observacoes == null;
-    this.nsrv.getAnotacaoByUser(this.usuario.idUsuario).subscribe((res: any) => this.observacoes = res);
+  inicioDataTables(){
+    let dataTable = new DataTable("#myTable", {
+      labels: { 
+        placeholder: "Buscar...", // The search input placeholder 
+        perPage: "{select} por página", // per-page dropdown label 
+        noRows: "Não há registros para ser exibidos.", // Message shown when there are no records to show 
+        noResults: "Nenhum resultado encontrado", // Message shown when there are no search results 
+        info: "Exibindo {end} de {rows} registros" // 
+    }, 
+    });
   }
 
-  listarAnotacoesPorFase(){
-
-    this._observacoes == null;
-    this.nsrv.getAnotacaoByUserAndFase(this.usuario.idUsuario, this.selectedJornada).subscribe((res: any) => this.observacoes = res);
+  listarAnotacoes(idUsuario:number){
+    this.nsrv.getAnotacaoByUser(idUsuario).subscribe(
+      (res: any) => this.observacoes = res);
   }
 
 }

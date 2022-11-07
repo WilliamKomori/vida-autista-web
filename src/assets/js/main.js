@@ -9,6 +9,8 @@
     if (all) {
       return [...document.querySelectorAll(el)]
     } else {
+
+
       return document.querySelector(el)
     }
   }
@@ -288,13 +290,6 @@
       }, false)
     })
 
-  /**
-   * Initiate Datatables
-   */
-  const datatables = select('.datatable', true)
-  datatables.forEach(datatable => {
-    new simpleDatatables.DataTable(datatable);
-  })
 
   /**
    * Autoresize echart charts
