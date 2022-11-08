@@ -1,0 +1,39 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Anotações</h1>
+       <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/">Jonada</a></li>
+            <li class="breadcrumb-item">Anotações</li>
+         </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                    <table id="myTable">
+                        <thead>
+                           <tr>
+                              <th scope="col">Nome</th>
+                              <th scope="col">Data da Observação</th>
+                              <th scope="col">Observação</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr  *ngFor="let item of observacoes">
+                              <td scope="row">{{ usuario.nome }}</td>   
+                              <td>{{ item.dataObservacao }}</td>
+                              <td>{{ item.observacao }}</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
+
