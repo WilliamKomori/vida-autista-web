@@ -1202,7 +1202,7 @@ body {
   
   .doctors .member .pic {
     overflow: hidden;
-    width: 180px;
+    width: 140px;
     border-radius: 50%;
   }
   
@@ -1220,6 +1220,7 @@ body {
   
   .doctors .member h4 {
     font-weight: 700;
+    padding-top: 10px;
     margin-bottom: 5px;
     font-size: 20px;
     color: #2c4964;
@@ -1639,7 +1640,7 @@ body {
   #footer {
     color: #444444;
     font-size: 14px;
-    background: #f1f7fd;
+    margin-left: 0px;
   }
   
   #footer .footer-top {
