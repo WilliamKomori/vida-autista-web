@@ -1,203 +1,219 @@
-<!-- NAVBAR -->
 
-<div class="col-md-7">
-    <nav class="navbar navbar-expand-lg navbar-transparent ">
+<div id="topbar" class="d-flex align-items-center fixed-top">
+  <div class="container d-flex justify-content-between">
+    <div class="contact-info d-flex align-items-center">
+      Um portal criado com o olhar de quem ama.
+    </div>
+    <div class="d-none d-lg-flex social-links align-items-center">
+    </div>
+  </div>
+</div>
 
-      <a [routerLink]="'/home'" class="titulo"><strong>
-          <img src="/assets/images/logonew.png" id="logo">
-        </strong></a>
-      <a class="navbar-brand" href="#"></a>
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
 
-      <div class="dropdown">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Cadastre-se
-        </button>
+    <a href="" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"> Vida Autista</a>
 
-        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item " data-toggle="modal" data-target="#modalCadastro">Usuário</a>
-          <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" data-toggle="modal" data-target="#modalCadastroProfissional">Profissional</a>
-        </div>
-      </div>
-
-      <button type="button" data-toggle="modal" data-target="#modalLogin" class="btn btn-outline-info">Entrar</button>
-
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#home">Home</a></li>
+        <li><a class="nav-link scrollto" href="#sobre">Sobre Nós</a></li>
+        <li><a class="nav-link scrollto" href="#time">Nosso Time</a></li>
+        <li><a class="nav-link scrollto" href="#aspiracoes">Nossas Aspirações</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
+
+    <a href="" class="appointment-btn scrollto" data-toggle="modal" data-target="#modalCadastro"> Criar Conta</a>
+    <a href="" class="appointment-btn scrollto" data-toggle="modal" data-target="#modalLogin"> Entrar</a>
+
   </div>
+</header>
 
-  <!-- MODAL LOGIN -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>Seja bem vindo ao Vida Autista</h1>
+      <h2>Um portal criado para te auxiliar no tratamento de pessoas com autismo.</h2>
+      <a href="#about" class="btn-get-started scrollto">Saiba Mais</a>
+    </div>
+  </section>
 
-  <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="card-title text-center">
-            Entrar
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" id="btnfecharLogin">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="form-signin">
-            <div class="form-label-group">
-              <label for="inputEmail">E-mail</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Endereço de e-mail" required autofocus
-                [(ngModel)]="emailLogin" [ngModelOptions]="{standalone: true}">
+    <section id="sobre" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="content">
+              <h3 class="text-center">Sobre Nós</h3>
+              <p> 
+                Uma plataforma no qual focamos em auxiliar as pessoas na sua jornada em busca do diagnostico de TEA, no qual iremos apontar profissionais e 
+                dicas para que nesse tempo de investigação vocês não percam tempo com idas e vindas desnecessárias e com informações passadas de maneira 
+                incorreta, que muita das vezes e disseminada por profissionais mal informados e desatualizados, afinal de contas o tempo e o bem mais precioso
+                para o desenvolvimento de qualquer crianca e principalmente do autista. 
+              </p>
+              <p>
+                Estamos nos dedicando para centralizar o passo a passo e orientações relacionadas a quais profissionais buscar, 
+                retornos aceitáveis ou busca de posições de outros profissionais e etc. Jornada elaborada por pessoas que ja passaram por essa 
+                fase de diagnostico e por profissionais especializados em comportamento (ABA), tudo isso para que o diagnostico seja assertivo 
+                e seu tempo valorizado.
+              </p>   
             </div>
-            <div class="form-label-group mt-3">
-              <label for="inputPassword">Senha</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Senha" [(ngModel)]="senhaLogin"
-                [ngModelOptions]="{standalone: true}" required>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="times" class="doctors section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nosso Time</h2>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic">
+                <img src="assets/images/time/sergio.png" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Sergio Castelo Pinheiro</h4>
+                <span>Scrum Master</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/sergio-castelo-pinheiro/" target="_blank"><i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
             </div>
-            <div class="custom-control custom-checkbox mb-3 mt-3">
-              <label class="custom-control-label " for="customCheck1">Lembrar-me</label>
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <br>
-              <a href="#">Esqueceu a senha? Clique aqui</a>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/karen.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Karen Dunkl</h4>
+                <span>Front-End Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/karen-dunkl-bb8927bb/" target="_blank" > <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
             </div>
-            <button class="btn btn-info btn-info btn-block text-uppercase" (click)="validaLogin();">Entrar</button>
-            <hr class="my-4">
-          </form>
-        </div>
+          </div>
 
-      </div>
-    </div>
-  </div>
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/wilham.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Mitsuo Komori</h4>
+                <span>Fullstack Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/william-mitsuo-komori/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/Augusto.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Augusto Barbosa</h4>
+                <span>Back-End Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/barbosaaugusto/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-   <!-- TEXTO BEM-VINDO HOME -->
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/jackson.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Jackson Braga</h4>
+                <span>Back-End Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/jackson-braga-6507317b/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-   <div class="row d-flex justify-content-around">
-    <div class="col-md-6 mx-auto">
-      <h1 class="display-3">Bem-vindos à sua <br>
-        plataforma de jornada autista</h1>
-    </div>
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/Felipe.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Felipe Martinelli</h4>
+                <span>Back-End Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/felipe-martinelli/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <div class="col-md-6 mx-auto ">
-      <img src="../../assets/images/logohome.png" id="arvore" title="imagem arvore com quebra cabeça"
-        alt="imagem arvore com quebra cabeça">
-    </div>
-  </div>
-
-
-  <!-- TEXTO SOBRE NÓS QUEM SOMOS -->
-
-
-  <div class="row text-center" id="sobrenos">
-
-    <div class="col-md-5">
-      <img src="../../assets/images/sobrenos.jpg" id="deficientesfoto">
-    </div>
-
-    <div class="col-md-7">
-      <h3 class="lead display-4 mb-4">Vida Autista</h3>
-
-      <p> Uma plataforma no qual focamos em auxiliar as pessoas na sua jornada em busca do diagnostico de TEA, no qual iremos apontar profissionais e dicas para que nesse tempo de investigacao
-        voces nao percam tempo com idas e vindas desnecessarias e com informacoes passadas de maneira incorreta, que muita das vezes e disseminada por profissionais mal informados e desatualizados, afinal de contas o tempo e o bem mais precioso para o desenvolvimento de qualquer crianca e principalmente do autista. Estamos
-        nos dedicando para centralizar o passo a passo e orientacoes relacionadas a quais profissionais buscar, retornos aceitaveis ou busca de posicoes de outros profissionais e etc. Jornada elaborada por pessoas que ja passaram por essa fase de diagnostico e por profissionais especializados em comportamento (ABA), tudo isso para que o diagnostico seja assertivo e seu tempo valorizado.
-         .</p>
-
-    </div>
-  </div>
-
-  <div class="parallaxdois"></div>
-
-  <!-- CARROUSEL NOSSO TIME QUEM SOMOS -->
-
-  <h3 class="lead display-4 mb-4">Nosso Time </h3>
-
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    </ol>
-
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../../assets/images/Augusto.png" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/images/Felipe.png" alt="Second slide">
-      </div>
-     <!-- <div class="carousel-item">
-        <img src="../../assets/images/leo.png" alt="Third slide">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/images/dani.png" alt="Third slide">
-      </div>
-      <div class="carousel-item">
-        <img src="../../assets/images/.png" alt="Third slide">
-      </div> -->
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-  <!-- TEXTO DA PÁGINA EMBAIXADORESS -->
-  <div class="parallax"></div>
-  <div class="container">
-    <div class="row" id="embaixadores">
-      <div class="col-md-6">
-        <div class="card-body" id="texto">
-
-          <h2 class="acessibilidade display-4  p-0 mb-4">Nossas Inspirações</h2> <br>
-          <p class="acessibilidade"> Para viabilizar a criação do nosso projeto buscamos opiniões e informações diversas.
-            Devido a certas facilitacoes e experiencias internas de membros do grupo, tivemos acesso a diversos impasses que a comunidade
-            autista enfrenta ao longo de sua jornada em busca do diagnostico, tais como: A falta do diagnostico, orientacoes improprias, tratamentos inadequados e etc, isso nos dispertou um interesse em tentar ajudar
-            a facilitar esse processo pra comunidade do espectro autista.
-            Conhecer a realidade vivenciada pelos autistas e pessoas que acompanham os mesmos que na grande maioria sao menores de idade foi o primeiro passo para idealizacao e formalizacao
-            das nossas ideias em relacao as funcionalidades da plataforma.
-            Aos entrevistados John Muller e Jacqueline Marques, psicologos especializados em comportamento e profissionais experientes e atuantes na intervencao terapeutica em autistas
-            e ao Augusto Barbosa nosso integrante do grupo e tambem pai do Heitor Barbosa, seu filho autista no qual a vivencia deles juntamente com a esposa Isabella Barbosa, nos motivou e cativou com a ideia do projeto, para todos, os nossos
-            sinceros agradecimentos pela colaboracao e pelo apoio imensuravel ao projeto.</p>
-
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/images/time/nicolas.png" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Nicollas M. Rezende</h4>
+                <span>Front-End Developer</span>
+                <div class="social">
+                  <a href="https://www.linkedin.com/in/nicollasmiyashiro/" target="_blank"> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="coll-md-6">
-        <div class="embed-responsive embed-responsive-16by9 video">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/s4BlYqg2Z78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <section id="aspiracoes" class="about section-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+
+            <div class="section-title">
+              <h2>Nossas Aspirações</h2>
+            </div>
+
+            <p>Para viabilizar a criação do nosso projeto buscamos opiniões e informações diversas.</p>
+            <p>Devido a certas facilitacoes e experiencias internas de membros do grupo, tivemos acesso a diversos impasses que a comunidade
+              autista enfrenta ao longo de sua jornada em busca do diagnostico, tais como: A falta do diagnostico, orientacoes improprias, 
+              tratamentos inadequados e etc, isso nos dispertou um interesse em tentar ajudar
+              a facilitar esse processo pra comunidade do espectro autista.</p>
+            <p>Conhecer a realidade vivenciada pelos autistas e pessoas que acompanham os mesmos que na grande maioria 
+              sao menores de idade foi o primeiro passo para idealizacao e formalizacao
+              das nossas ideias em relacao as funcionalidades da plataforma.</p>
+            <p>Aos entrevistados John Muller e Jacqueline Marques, psicologos especializados em comportamento e profissionais experientes e atuantes na intervencao terapeutica em autistas
+              e ao Augusto Barbosa nosso integrante do grupo e tambem pai do Heitor Barbosa, seu filho autista no qual a vivencia deles juntamente com a esposa Isabella Barbosa, nos motivou e cativou com a ideia do projeto, para todos, os nossos
+              sinceros agradecimentos pela colaboracao e pelo apoio imensuravel ao projeto.</p>
+          </div>
         </div>
       </div>
-
+    </section>
+  <footer id="footer">
+    <div class="container py-4">
+      <div class="me-md-auto text-center text-md-start" style="margin-left: 0;">
+        <div class="copyright">
+          <strong><span>Grupo E - MBA Engenharia de Software</span></strong>
+        </div>
+        <div class="credits">
+          Faculdade Impacta 
+        </div>
+      </div>
     </div>
-  </div>
+  </footer>
 
 
 
-  <!-- FOOTER -->
 
-  <hr>
+    <!-- MODAL CADASTRO USUARIO -->
 
-  <div class="row">
-    <div class="col-md-12 d-flex justify-content-center">
-        <strong>Vida Autista&reg;</strong>2022
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 d-flex justify-content-center mb-3">
-        <a class="nav-link mr-1 m-0 p-0" [routerLink]="'/contato'">Contato</a><strong>|</strong>
-        <a class="nav-link ml-1 m-0 p-0" [routerLink]="'/faq'">Ajuda</a>
-    </div>
-  </div>
-
-
-  <!-- MODAL CADASTRO USUARIO -->
-
-  <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -260,6 +276,45 @@
       </div>
     </div>
   </div>
+
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="card-title text-center">
+          Entrar
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar" id="btnfecharLogin">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signin">
+          <div class="form-label-group">
+            <label for="inputEmail">E-mail</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Endereço de e-mail" required autofocus
+              [(ngModel)]="emailLogin" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-label-group mt-3">
+            <label for="inputPassword">Senha</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" [(ngModel)]="senhaLogin"
+              [ngModelOptions]="{standalone: true}" required>
+          </div>
+          <div class="custom-control custom-checkbox mb-3 mt-3">
+            <label class="custom-control-label " for="customCheck1">Lembrar-me</label>
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <br>
+            <a href="#">Esqueceu a senha? Clique aqui</a>
+          </div>
+          <a class="btn btn-info btn-info btn-block text-uppercase" (click)="validaLogin();">Entrar</a>
+          <hr class="my-4">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!-- MODAL CADASTRO PROFISSIONAL -->
 
@@ -325,6 +380,3 @@
         </div>
       </div>
     </div>
-
-
-
