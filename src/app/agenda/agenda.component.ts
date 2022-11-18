@@ -11,6 +11,7 @@ import { Globals } from '../model/Globals';
 import { Evento } from '../model/Evento';
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AnotacoesService } from '../service/anotacoes.service';
 
 defineFullCalendarElement();
 
@@ -44,7 +45,8 @@ export class AgendaComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private agendaService: AgendaService,
-    private usuarioService: UsuarioService) { }
+    private usuarioService: UsuarioService,
+    private anotacaoService: AnotacoesService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -96,7 +98,8 @@ export class AgendaComponent implements OnInit {
   }
 
   recuperarEventos(id?: number): void {
-    this.agendaService.SelecionarTodosEventos(id ? id : AgendaComponent.usuario.idUsuario)
+    id = id ? id : AgendaComponent.usuario.idUsuario;
+    this.agendaService.SelecionarTodosEventos(id)
       .subscribe(e => {
         var eventos = AgendaComponent.calendarApi.getEvents();
         var len = eventos.length;
@@ -104,6 +107,11 @@ export class AgendaComponent implements OnInit {
           eventos[i].remove();
         }
         AgendaComponent.calendarApi.addEventSource({ events: e.map(e => ({ id: `${e.id}`, title: e.nome, start: e.dataHora })) });
+      });
+
+    this.anotacaoService.getAnotacaoByUser(id)
+      .subscribe(a => {
+        AgendaComponent.calendarApi.addEventSource({ events: a.map(a => ({ id: `${a.idAnotacao}`, title: 'Anotação jornada', start: a.dataObservacao, jornada: true, detalhe: a.observacao })) });
       });
   }
 
@@ -185,10 +193,20 @@ export class AgendaComponent implements OnInit {
     eventClick: async (info: any) => {
       this.limparCampos();
 
-      let evento = await this.pegarEvento(info.event.id);
-      if (!evento) {
-        this.exibirAlerta("Falha ao recuperar o evento.");
-        return;
+      let evento: any = null;
+      
+      if(info.event.extendedProps.jornada){
+        evento = {
+          dataHora: info.event.start,
+          nome: info.event.title,
+          anotacao: info.event.extendedProps.detalhe
+        };
+      }else{
+        evento = await this.pegarEvento(info.event.id);
+        if (!evento) {
+          this.exibirAlerta("Falha ao recuperar o evento.");
+          return;
+        }
       }
 
       let id: any = document.getElementById("id");

@@ -7,13 +7,13 @@
    </div>
    <div class="pagetitle">
       <h1>Agenda</h1>
-      <nav class="mt-2 d-flex justify-content-between align-items-center">
-         <ol class="pr-5 breadcrumb">
+      <nav class="d-flex justify-content-between mt-2">
+         <ol class="pr-5 breadcrumb col">
             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
             <li class="breadcrumb-item">Agenda</li>
          </ol>
-         <div>
-            <button class="btn btn-primary m-1" (click)="exportar()">Exportar</button>
+         <div class="ml-1">
+            <button class="btn btn-primary mr-1" (click)="exportar()">Exportar</button>
             <button *ngIf="podeEditar()" class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
          </div>
       </nav>

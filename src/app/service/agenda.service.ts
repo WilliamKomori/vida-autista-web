@@ -10,21 +10,21 @@ export default class AgendaService {
 
   private url: string = "https://vida-autista-backend.herokuapp.com/api/Calendario";
   private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'accept': '*/*', 'host': 'localhost'})
   };
   constructor(
     private http: HttpClient
   ) { }
 
   public Selecionar(id: number): Observable<Evento> {
-    return this.http.get<Evento>(`${this.url}/${id}`)
+    return this.http.get<Evento>(`${this.url}/${id}`, this.httpOptions)
       .pipe(
         catchError(() => of())
       );
   }
 
   public SelecionarTodosEventos(idUsuario: number): Observable<Evento[]> {
-    return this.http.get<Evento[]>(`${this.url}/calendarioUsuario/${idUsuario}`)
+    return this.http.get<Evento[]>(`${this.url}/calendarioUsuario/${idUsuario}`, this.httpOptions)
       .pipe(
         catchError(() => of())
       );
@@ -52,7 +52,7 @@ export default class AgendaService {
   }
 
   public GerarPDF(idUsuario: number): Observable<any> {
-    let headers = new HttpHeaders({ 'Content-Type': 'application/pdf', 'Accept': 'application/pdf, text/plain, */*' });
+    let headers = new HttpHeaders({ 'Content-Type': 'application/pdf', 'Accept': 'application/pdf, text/plain, */*', "Access-Control-Allow-Origin": "*" });
     return this.http.get(`${this.url}/relatorioCalendarioUsuario/${idUsuario}`, { headers: headers, responseType: 'blob' })
       .pipe(
         map((res: any) => {
