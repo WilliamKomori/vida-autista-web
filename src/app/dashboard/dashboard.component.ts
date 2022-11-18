@@ -5,6 +5,8 @@ import { UsuarioService } from '../service/usuario.service';
 import { Globals } from 'src/app/model/Globals';
 import { Router } from '@angular/router';
 import { observacaoModel } from './dashboard.model';
+import { Evento } from '../model/Evento';
+import AgendaService from '../service/agenda.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,18 +18,18 @@ export class DashboardComponent implements OnInit {
 
   usuario!: Usuario;
   currentUser! : string;
-  RecebeAnotacoes: any
+  RecebeAnotacoes: any;
   idUsuario!: number;
+  eventos!: Evento[];
 
   constructor(
     public anotacoes: AnotacoesService,
     public srv: UsuarioService,
     public router: Router,
+    private agendaService: AgendaService,
   ) {}
 
   ngOnInit() {
-
-
       this.currentUser = localStorage.getItem("MyToken")!;
       this.srv.buscarInfo(this.currentUser).subscribe(
         (res: any) => {
@@ -36,27 +38,29 @@ export class DashboardComponent implements OnInit {
               this.usuario.nome = res.nome;
               this.usuario.imagem = res.imagem;
               this.usuario.idUsuario = res.idUsuario;
-              this.carregaAnotações();
+              this.carregaAnotacoes();
+              this.carregaEventos(this.usuario.idUsuario);
         },
       err => {
         console.log(err);
         alert("Erro ao carregar informações do usuario");
       });
-
-      console.log(this.idUsuario);
-
-    
   }
 
-  carregaAnotações(){
+  carregaAnotacoes(){
     this.RecebeAnotacoes = new observacaoModel;
     this.anotacoes.getAnotacaoByUser(this.usuario.idUsuario).subscribe(
       (res: any) => {
         this.RecebeAnotacoes = res; 
         console.log(this.RecebeAnotacoes);
       }
-    )
-  
+    );
   }
 
+  carregaEventos(id: number){
+    this.agendaService.SelecionarTodosEventos(id)
+      .subscribe(e => {
+        this.eventos = e;
+      });
+  }
 }
