@@ -12,7 +12,7 @@ export class JornadaService {
   constructor(public http: HttpClient) { }
 
   public getJornadaByIdUser(id: number) {
-    return this.http.get<Jornada[]>("https://vida-autista-backend.herokuapp.com/jornada/" + id).pipe(tap(console.log));
+    return this.http.get<Jornada[]>("https://ec2-54-233-106-44.sa-east-1.compute.amazonaws.com/jornada/" + id).pipe(tap(console.log));
   }
 
 }
