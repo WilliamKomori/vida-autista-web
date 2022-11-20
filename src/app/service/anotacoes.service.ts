@@ -8,19 +8,21 @@ import { Notes } from '../model/Notes';
 })
 export class AnotacoesService {
 
+  private baseUrl: string = 'http://54.233.106.44:8080';
+
 
   constructor(public http: HttpClient) { }
 
   public inserirAnotacao(param: any) {
-    return this.http.post("https://ec2-54-233-106-44.sa-east-1.compute.amazonaws.com/notes/new", param);
+    return this.http.post(`${this.baseUrl}/notes/new`, param);
   }
 
   public getAnotacaoByUser(id: number) {
-    return this.http.get<Notes[]>("https://ec2-54-233-106-44.sa-east-1.compute.amazonaws.com/notes/all/" + id);
+    return this.http.get<Notes[]>(`${this.baseUrl}/notes/all/` + id);
   }
 
   public getAnotacaoByUserAndFase(id: number, idFase: number) {
-    return this.http.get<Notes[]>("https://ec2-54-233-106-44.sa-east-1.compute.amazonaws.com/notes/all/" + id + "/" + idFase);
+    return this.http.get<Notes[]>(`${this.baseUrl}/notes/all/` + id + '/' + idFase);
   }
 
 }
