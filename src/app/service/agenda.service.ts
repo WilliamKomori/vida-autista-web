@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export default class AgendaService {
 
-  private url: string = "https://vida-autista-backend.herokuapp.com/api/Calendario";
+  private url: string = "https://vidaautista-dotnet.herokuapp.com/api/Calendario";
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'accept': '*/*', 'host': 'localhost'})
   };
