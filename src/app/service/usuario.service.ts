@@ -37,5 +37,4 @@ export class UsuarioService {
   public buscarInfo(token: string) {
     return this.http.get("https://vida-autista-backend.herokuapp.com/user/info?token=" + token);
   }
-
 }

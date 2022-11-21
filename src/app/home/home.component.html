@@ -16,10 +16,10 @@
 
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" href="#home">Home</a></li>
-        <li><a class="nav-link scrollto" href="#sobre">Sobre Nós</a></li>
-        <li><a class="nav-link scrollto" href="#time">Nosso Time</a></li>
-        <li><a class="nav-link scrollto" href="#aspiracoes">Nossas Aspirações</a></li>
+        <li><a class="nav-link scrollto" (click)="scroll(home)">Home</a></li>
+        <li><a class="nav-link scrollto" (click)="scroll(sobre)">Sobre Nós</a></li>
+        <li><a class="nav-link scrollto" (click)="scroll(time)">Nosso Time</a></li>
+        <li><a class="nav-link scrollto" (click)="scroll(aspiracoes)" >Nossas Aspirações</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
@@ -30,7 +30,7 @@
   </div>
 </header>
 
-  <section id="hero" class="d-flex align-items-center">
+  <section #home class="d-flex align-items-center">
     <div class="container">
       <h1>Seja bem vindo ao Vida Autista</h1>
       <h2>Um portal criado para te auxiliar no tratamento de pessoas com autismo.</h2>
@@ -38,7 +38,7 @@
     </div>
   </section>
 
-    <section id="sobre" class="why-us">
+    <section #sobre class="why-us">
       <div class="container">
 
         <div class="row">
@@ -64,7 +64,7 @@
       </div>
     </section>
 
-    <section id="times" class="doctors section-bg">
+    <section #time class="doctors section-bg">
       <div class="container">
         <div class="section-title">
           <h2>Nosso Time</h2>
@@ -167,7 +167,7 @@
       </div>
     </section>
 
-    <section id="aspiracoes" class="about section-bg">
+    <section #aspiracoes class="about section-bg section-padding">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
@@ -269,8 +269,7 @@
 
             </div>
 
-            <button class="btn btn-info btn-primary btn-block text-uppercase mt-4" (click)="valida();">Cadastrar</button>
-            <hr class="my-4">
+            <button class="btn-get-started"  (click)="valida();">Cadastrar</button>
           </form>
         </div>
       </div>
@@ -307,8 +306,7 @@
             <br>
             <a href="#">Esqueceu a senha? Clique aqui</a>
           </div>
-          <a class="btn btn-info btn-info btn-block text-uppercase" (click)="validaLogin();">Entrar</a>
-          <hr class="my-4">
+          <button class="btn-get-started" (click)="validaLogin();">Entrar</button>
         </form>
       </div>
     </div>
@@ -374,8 +372,8 @@
 
             </div>
 
-            <button class="btn btn-info btn-primary btn-block text-uppercase mt-4" (click)="validaProfissional();">Cadastrar</button>
-            <hr class="my-4">
+            <a class="btn-get-started" (click)="validaProfissional();">Cadastrar</a>
+            
           </form>
         </div>
       </div>

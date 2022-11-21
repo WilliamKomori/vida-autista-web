@@ -22,4 +22,9 @@ export class AnotacoesService {
     return this.http.get<Notes[]>("https://vida-autista-backend.herokuapp.com/notes/all/" + id + "/" + idFase);
   }
 
+  public excluirAnotacao(id: number){
+    return this.http.delete("http://localhost:8080/notes/" + id)
+  }
+
+
 }

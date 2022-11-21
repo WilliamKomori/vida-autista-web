@@ -497,7 +497,7 @@ body {
     font-size: 24px;
   }
   
-  #hero .btn-get-started {
+  .btn-get-started {
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -510,9 +510,10 @@ body {
     transition: 0.5s;
     color: #fff;
     background: #1977cc;
+    border: 0px;
   }
   
-  #hero .btn-get-started:hover {
+  .btn-get-started:hover {
     background: #3291e6;
   }
   
@@ -560,6 +561,10 @@ body {
   
   .section-bg {
     background-color: #f1f7fd;
+  }
+
+  .section-padding{
+    padding: 0;
   }
   
   .section-title {
@@ -797,7 +802,7 @@ body {
   }
   
   .about .video-box {
-    // background: url("../img/about.jpg") center center no-repeat;
+    background: url("../../assets/img/autismo.jpg") center center no-repeat;
     background-size: cover;
     min-height: 500px;
   }
@@ -1634,9 +1639,6 @@ body {
     }
   }
   
-  /*--------------------------------------------------------------
-  # Footer
-  --------------------------------------------------------------*/
   #footer {
     color: #444444;
     font-size: 14px;

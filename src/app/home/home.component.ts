@@ -64,6 +64,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+  }
   
   public valida(){
     
@@ -207,9 +211,7 @@ export class HomeComponent implements OnInit {
       return reTipo.test(pVal); 
     }
 
-
     enviarDados(){
-
       this.usuario.nome = this.nomeCompleto;
       this.usuario.email = this.email;
       this.usuario.telefone = this.telefone;
