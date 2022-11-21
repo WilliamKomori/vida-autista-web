@@ -1,4 +1,15 @@
 <main id="main" class="main">
+
+   <div class="pagetitle">
+      <h1>Agenda</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active">Agenda</li>
+         </ol>
+      </nav>
+   </div>
+
    <div class="alert fade alert-fixed" role="alert">
       <span id="alerta"></span>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -6,12 +17,8 @@
       </button>
    </div>
    <div class="pagetitle">
-      <h1>Agenda</h1>
       <nav class="mt-2 d-flex justify-content-between align-items-center">
-         <ol class="pr-5 breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-            <li class="breadcrumb-item">Agenda</li>
-         </ol>
+         
          <div>
             <button class="btn btn-primary m-1" (click)="exportar()">Exportar</button>
             <button *ngIf="podeEditar()" class="btn btn-success" (click)="compartilhar()">Compartilhar</button>
@@ -23,6 +30,7 @@
          <div class="col-lg-12">
             <div class="card">
                <div class="card-body">
+                  <h5 class="card-title"></h5>
                   <full-calendar #calendar [options]='calendarOptions'></full-calendar>
                </div>
             </div>

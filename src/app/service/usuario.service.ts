@@ -37,5 +37,4 @@ export class UsuarioService {
   public buscarInfo(token: string){
     return this.http.get("http://localhost:8080/user/info?token="+token);
   }
-
 }

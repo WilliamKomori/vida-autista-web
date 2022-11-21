@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Globals } from '../model/Globals';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
@@ -7,6 +7,7 @@ import { AnotacoesService } from '../service/anotacoes.service';
 import { Notes } from '../model/Notes';
 import { DataTable } from 'simple-datatables';
 import { RecebeObsrevacoesModel } from './anotacoes.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-anotacoes',
@@ -20,15 +21,17 @@ export class AnotacoesComponent implements OnInit {
   observacoes!: RecebeObsrevacoesModel[];
   usuario!: Usuario;
   currentUser! : string;
-  myTable!: any; 
+  myTable!: any;
+  dataTable !: any;
   
 
-  constructor(public router: Router, public srv: UsuarioService, public nsrv: AnotacoesService) { }
+  constructor(
+    public router: Router, 
+    public srv: UsuarioService, 
+    public nsrv: AnotacoesService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
-    
-
     if(localStorage.getItem("MyToken")){
       this.currentUser = localStorage.getItem("MyToken")!;
 
@@ -62,14 +65,14 @@ export class AnotacoesComponent implements OnInit {
   }
 
   inicioDataTables(){
-    let dataTable = new DataTable("#myTable", {
+    this.dataTable = new DataTable("#myTable", {
       labels: { 
         placeholder: "Buscar...", // The search input placeholder 
         perPage: "{select} por página", // per-page dropdown label 
         noRows: "Não há registros para ser exibidos.", // Message shown when there are no records to show 
         noResults: "Nenhum resultado encontrado", // Message shown when there are no search results 
         info: "Exibindo {end} de {rows} registros" // 
-    }, 
+    }
     });
   }
 
@@ -77,5 +80,4 @@ export class AnotacoesComponent implements OnInit {
     this.nsrv.getAnotacaoByUser(idUsuario).subscribe(
       (res: any) => this.observacoes = res);
   }
-
 }
