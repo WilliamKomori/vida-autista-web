@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export default class AgendaService {
 
-  private url: string = "https://localhost:7092/api/Calendario";
+  private url: string = "https://vidaautista-dotnet.herokuapp.com/api/Calendario";
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -16,49 +16,49 @@ export default class AgendaService {
     private http: HttpClient
   ) { }
 
-  public Selecionar(id: number): Observable<Evento>{
+  public Selecionar(id: number): Observable<Evento> {
     return this.http.get<Evento>(`${this.url}/${id}`)
-    .pipe(
-      catchError(() => of())
-    );
+      .pipe(
+        catchError(() => of())
+      );
   }
 
-  public SelecionarTodosEventos(idUsuario: number): Observable<Evento[]>{
+  public SelecionarTodosEventos(idUsuario: number): Observable<Evento[]> {
     return this.http.get<Evento[]>(`${this.url}/calendarioUsuario/${idUsuario}`)
-    .pipe(
-      catchError(() => of())
-    );
+      .pipe(
+        catchError(() => of())
+      );
   }
 
-  public Criar(evento: Evento): Observable<Evento>{
+  public Criar(evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(this.url, evento, this.httpOptions)
       .pipe(
         catchError(() => of())
       );
   }
 
-  public Editar(evento: Evento): Observable<Evento>{
+  public Editar(evento: Evento): Observable<Evento> {
     return this.http.put<Evento>(this.url, evento, this.httpOptions)
-    .pipe(
-      catchError(() => of())
-    );
+      .pipe(
+        catchError(() => of())
+      );
   }
 
-  public Remover(id: number): Observable<any>{
+  public Remover(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
-    .pipe(
-      catchError(() => {throw new Error()})
-    );
+      .pipe(
+        catchError(() => { throw new Error() })
+      );
   }
 
-  public GerarPDF(idUsuario: number): Observable<any>{
-    let headers = new HttpHeaders({ 'Content-Type': 'application/pdf','Accept': 'application/pdf, text/plain, */*' });
-    return this.http.get(`${this.url}/relatorioCalendarioUsuario/${idUsuario}`, {headers: headers, responseType: 'blob'})
-    .pipe(
-      map((res: any) => {
-        return new Blob([res], { type: 'application/pdf' });
-      }),
-      catchError((err) => {throw err})
-    );
+  public GerarPDF(idUsuario: number): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/pdf', 'Accept': 'application/pdf, text/plain, */*' });
+    return this.http.get(`${this.url}/relatorioCalendarioUsuario/${idUsuario}`, { headers: headers, responseType: 'blob' })
+      .pipe(
+        map((res: any) => {
+          return new Blob([res], { type: 'application/pdf' });
+        }),
+        catchError((err) => { throw err })
+      );
   }
 }

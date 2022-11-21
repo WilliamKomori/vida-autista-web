@@ -10,31 +10,31 @@ export class UsuarioService {
 
   constructor(public http: HttpClient) { }
 
-  public recuperaTodos(){
-    return this.http.get("http://localhost:8080/usuario/todos");
+  public recuperaTodos() {
+    return this.http.get("https://vida-autista-backend.herokuapp.com/usuario/todos");
 
   }
-  public recuperaPostsUsuario(id: number){
-    return this.http.get("http://localhost:8080/usuario/"+id);
+  public recuperaPostsUsuario(id: number) {
+    return this.http.get("https://vida-autista-backend.herokuapp.com/usuario/" + id);
 
   }
-  public insere(usuario:Usuario){
-    return this.http.post("http://localhost:8080/user/new",usuario);
+  public insere(usuario: Usuario) {
+    return this.http.post("https://vida-autista-backend.herokuapp.com/user/new", usuario);
   }
 
-  public atualiza(usuario: Usuario, id: number){
-    return this.http.put("http://localhost:8080/user/alterar/"+id,usuario);
+  public atualiza(usuario: Usuario, id: number) {
+    return this.http.put("https://vida-autista-backend.herokuapp.com/alterar/" + id, usuario);
   }
 
-  public atualizaSenha(usuario: Usuario, id: number){
-    return this.http.put("http://localhost:8080/user/alterar/"+ id +"/senha", usuario);
+  public atualizaSenha(usuario: Usuario, id: number) {
+    return this.http.put("https://vida-autista-backend.herokuapp.com/user/alterar/" + id + "/senha", usuario);
   }
 
   public autenticar(usuario: Usuario) {
-    return this.http.post("http://localhost:8080/user/login", usuario);
+    return this.http.post("https://vida-autista-backend.herokuapp.com/user/login", usuario);
   }
 
-  public buscarInfo(token: string){
-    return this.http.get("http://localhost:8080/user/info?token="+token);
+  public buscarInfo(token: string) {
+    return this.http.get("https://vida-autista-backend.herokuapp.com/user/info?token=" + token);
   }
 }

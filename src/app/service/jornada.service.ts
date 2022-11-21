@@ -11,8 +11,8 @@ export class JornadaService {
 
   constructor(public http: HttpClient) { }
 
-  public getJornadaByIdUser(id: number){
-    return this.http.get<Jornada[]>("http://localhost:8080/jornada/"+id).pipe(tap(console.log));
+  public getJornadaByIdUser(id: number) {
+    return this.http.get<Jornada[]>("https://vida-autista-backend.herokuapp.com/jornada/" + id).pipe(tap(console.log));
   }
 
 }
