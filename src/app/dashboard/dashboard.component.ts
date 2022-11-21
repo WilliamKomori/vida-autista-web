@@ -18,12 +18,12 @@ export class DashboardComponent implements OnInit {
 
   usuario!: Usuario;
   currentUser! : string;
-  RecebeAnotacoes: any;
+  anotacoes: any;
   idUsuario!: number;
   eventos!: Evento[];
 
   constructor(
-    public anotacoes: AnotacoesService,
+    public anotacoesService: AnotacoesService,
     public srv: UsuarioService,
     public router: Router,
     private agendaService: AgendaService,
@@ -48,11 +48,11 @@ export class DashboardComponent implements OnInit {
   }
 
   carregaAnotacoes(){
-    this.RecebeAnotacoes = new observacaoModel;
-    this.anotacoes.getAnotacaoByUser(this.usuario.idUsuario).subscribe(
+    this.anotacoes = new observacaoModel;
+    this.anotacoesService.getAnotacaoByUser(this.usuario.idUsuario).subscribe(
       (res: any) => {
-        this.RecebeAnotacoes = res; 
-        console.log(this.RecebeAnotacoes);
+        this.anotacoes = res;
+        this.anotacoes.map((a: any) => a.dataLocal = new Date(a.dataObservacao).toLocaleDateString('en-GB'));
       }
     );
   }

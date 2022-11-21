@@ -22,13 +22,9 @@ export class AnotacoesComponent implements OnInit {
   currentUser! : string;
   myTable!: any; 
   
-
   constructor(public router: Router, public srv: UsuarioService, public nsrv: AnotacoesService) { }
 
   ngOnInit(): void {
-
-    
-
     if(localStorage.getItem("MyToken")){
       this.currentUser = localStorage.getItem("MyToken")!;
 
@@ -42,7 +38,7 @@ export class AnotacoesComponent implements OnInit {
               this.listarAnotacoes(this.usuario.idUsuario);
               
 
-              setTimeout(()=>{                           // <<<---using ()=> syntax
+              setTimeout(()=>{
                 this.inicioDataTables();
             }, 1500);
         },
@@ -56,9 +52,6 @@ export class AnotacoesComponent implements OnInit {
       alert("Você Precisa estar conectado para acessar essa página!")
       console.log(localStorage.getItem);
     }
-
-    
-
   }
 
   inicioDataTables(){
@@ -75,7 +68,9 @@ export class AnotacoesComponent implements OnInit {
 
   listarAnotacoes(idUsuario:number){
     this.nsrv.getAnotacaoByUser(idUsuario).subscribe(
-      (res: any) => this.observacoes = res);
+      (res: any) => {
+        this.observacoes = res;
+        this.observacoes.map(o => o.dataLocal = new Date(o.dataObservacao).toLocaleDateString('en-GB'));
+      });
   }
-
 }

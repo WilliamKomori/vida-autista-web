@@ -4,5 +4,6 @@ export class RecebeObsrevacoesModel{
     idAnotacao!: number;
     idFase!: number;
     idUsuario!: number;
-    observacao!: string;   
+    observacao!: string;
+    dataLocal!: string;
 }
