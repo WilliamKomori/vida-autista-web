@@ -5,4 +5,5 @@ export class observacaoModel {
    public idFase!: number;
    public faseFinalizada!: boolean;
    public idUsuario!: number
+   public dataLocal!: string;
 }

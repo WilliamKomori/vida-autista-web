@@ -18,7 +18,7 @@ export class MeuPerfilComponent implements OnInit {
   loading: boolean = false; // Flag variable
   file!: File; // Variable to store file
   usuario!: Usuario;
-  currentUser! : string;
+  currentUser!: string;
   public email!: string;
   public documento!: string;
   public telefone!: string;
@@ -29,38 +29,36 @@ export class MeuPerfilComponent implements OnInit {
   public novaSenha!: string;
   public novaSenhaRepetida!: string;
 
-  constructor(public router: Router, public srv: UsuarioService, private http: HttpClient, private fileUploadService: FileUploadServiceService) {}
+  constructor(public router: Router, public srv: UsuarioService, private http: HttpClient, private fileUploadService: FileUploadServiceService) { }
 
   ngOnInit(): void {
-    
-    if(localStorage.getItem("MyToken")){
+
+    if (localStorage.getItem("MyToken")) {
 
       this.currentUser = localStorage.getItem("MyToken")!;
 
       this.srv.buscarInfo(this.currentUser).subscribe(
         (res: any) => {
 
-              Globals.user = res;
-              this.usuario = new Usuario();
-              this.usuario.nome = res.nome;
-              this.usuario.idUsuario = res.idUsuario;
-              this.usuario.dataNascimento = res.dataNascimento;
-              this.usuario.telefone = res.telefone;
-              this.usuario.email = res.email;
-              this.usuario.imagem = res.imagem;
-              this.usuario.senha = res.senha;
+          Globals.user = res;
+          this.usuario = new Usuario();
+          this.usuario.nome = res.nome;
+          this.usuario.idUsuario = res.idUsuario;
+          this.usuario.dataNascimento = res.dataNascimento;
+          this.usuario.telefone = res.telefone;
+          this.usuario.email = res.email;
+          this.usuario.imagem = res.imagem;
+          this.usuario.senha = res.senha;
+          this.usuario.dataLocal = new Date(`${res.dataNascimento}T00:00`).toLocaleDateString('pt-BR');
         },
-      err => {
-        console.log(err);
-        alert("Erro ao carregar informações do usuario");
-      });
+        err => {
+          alert("Erro ao carregar informações do usuario");
+        });
 
-  }else{
-    this.router.navigate(['/home']);
-    alert("Você Precisa estar conectado para acessar essa página!")
-    console.log(localStorage.getItem);
-  }
-
+    } else {
+      this.router.navigate(['/home']);
+      alert("Você Precisa estar conectado para acessar essa página!");
+    }
   }
 
   onFileChanged(event: any) {
@@ -74,64 +72,64 @@ export class MeuPerfilComponent implements OnInit {
     console.log(this.file);
     this.fileUploadService.upload(this.file).subscribe(
       (event: any) => {
-          if (typeof (event) === 'object') {
+        if (typeof (event) === 'object') {
 
-            console.log(event);
-            console.log(event.link);
+          console.log(event);
+          console.log(event.link);
 
-              // Short link via api response
-              this.shortLink = event.link;
+          // Short link via api response
+          this.shortLink = event.link;
 
-              this.loading = false; // Flag variable 
-          }
+          this.loading = false; // Flag variable 
+        }
       }
-  );
+    );
 
   }
 
-  atualizar(){
+  atualizar() {
 
     console.log(this.usuario);
 
     this.srv.atualiza(this.usuario, this.usuario.idUsuario).subscribe(
-      res =>{
+      res => {
         alert("Atualizado com Sucesso!");
       },
-      err=>{
+      err => {
         console.log(err);
         alert("Erro ao atualizar");
       }
     )
-  
+
   }
 
-  atualizarSenha(){
+  atualizarSenha() {
 
     console.log(this.usuario);
 
-    if(this.novaSenha == this.novaSenhaRepetida){
+    if (this.novaSenha == this.novaSenhaRepetida) {
 
-      if(this.usuario.senha == this.senhaAtual){
+      if (this.usuario.senha == this.senhaAtual) {
 
         this.usuario.senha = this.novaSenha;
 
         this.srv.atualizaSenha(this.usuario, this.usuario.idUsuario).subscribe(
-          res =>{
+          res => {
             alert("Atualizado com Sucesso!");
           },
-          err=>{
+          err => {
             console.log(err);
             alert("Erro ao atualizar");
           }
         )
 
       }
-      else{
+      else {
         alert("Senha Atual Inválida");
       }
 
     }
-    else{
+    else {
       alert("As senhas não correspondem!");
     }
 

@@ -16,7 +16,7 @@
                    <h5 class="card-title">Timeline</h5>
                    <div class="activity">
                       <div class="activity-item d-flex" *ngFor="let anotacoes of RecebeAnotacoes;">
-                         <div class="activite-label">{{anotacoes.dataObservacao }}</div>
+                         <div class="activite-label" style="min-width: 5.5rem;">{{anotacoes.dataLocal}}</div>
                          <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                          <div class="activity-content"> {{anotacoes.observacao}}</div>
                       </div>

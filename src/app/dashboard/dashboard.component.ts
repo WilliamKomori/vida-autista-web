@@ -42,21 +42,15 @@ export class DashboardComponent implements OnInit {
         console.log(err);
         alert("Erro ao carregar informações do usuario");
       });
-
-      console.log(this.idUsuario);
-
-    
   }
 
   carregaAnotações(){
     this.RecebeAnotacoes = new observacaoModel;
     this.anotacoes.getAnotacaoByUser(this.usuario.idUsuario).subscribe(
       (res: any) => {
-        this.RecebeAnotacoes = res; 
-        console.log(this.RecebeAnotacoes);
+        this.RecebeAnotacoes = res;
+        this.RecebeAnotacoes.map((a: any) => a.dataLocal = new Date(a.dataObservacao).toLocaleDateString('en-GB'))
       }
-    )
-  
+    );
   }
-
 }

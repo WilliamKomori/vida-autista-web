@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Globals } from '../model/Globals';
 import { Router } from '@angular/router';
 import { Usuario } from '../model/Usuario';
@@ -16,68 +16,71 @@ import { ToastrService } from 'ngx-toastr';
   providers: [Globals]
 })
 export class AnotacoesComponent implements OnInit {
-  idFase! : number;
-  selectedJornada! : number;
+  idFase!: number;
+  selectedJornada!: number;
   observacoes!: RecebeObsrevacoesModel[];
   usuario!: Usuario;
-  currentUser! : string;
+  currentUser!: string;
   myTable!: any;
   dataTable !: any;
-  
+
 
   constructor(
-    public router: Router, 
-    public srv: UsuarioService, 
+    public router: Router,
+    public srv: UsuarioService,
     public nsrv: AnotacoesService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("MyToken")){
+    if (localStorage.getItem("MyToken")) {
       this.currentUser = localStorage.getItem("MyToken")!;
 
       this.srv.buscarInfo(this.currentUser).subscribe(
         (res: any) => {
 
-              Globals.user = res;
-              this.usuario = new Usuario();
-              this.usuario.nome = res.nome;
-              this.usuario.idUsuario = res.idUsuario;
-              this.listarAnotacoes(this.usuario.idUsuario);
-              
+          Globals.user = res;
+          this.usuario = new Usuario();
+          this.usuario.nome = res.nome;
+          this.usuario.idUsuario = res.idUsuario;
+          this.listarAnotacoes(this.usuario.idUsuario);
 
-              setTimeout(()=>{                           // <<<---using ()=> syntax
-                this.inicioDataTables();
-            }, 1500);
+
+          setTimeout(() => {                           // <<<---using ()=> syntax
+            this.inicioDataTables();
+          }, 1500);
         },
-      err => {
-        console.log(err);
-        alert("Erro ao carregar informações do usuario");
-      });
+        err => {
+          console.log(err);
+          alert("Erro ao carregar informações do usuario");
+        });
 
-    }else{
+    } else {
       this.router.navigate(['/home']);
       alert("Você Precisa estar conectado para acessar essa página!")
       console.log(localStorage.getItem);
     }
 
-    
+
 
   }
 
-  inicioDataTables(){
+  inicioDataTables() {
     this.dataTable = new DataTable("#myTable", {
-      labels: { 
+      labels: {
         placeholder: "Buscar...", // The search input placeholder 
         perPage: "{select} por página", // per-page dropdown label 
         noRows: "Não há registros para ser exibidos.", // Message shown when there are no records to show 
         noResults: "Nenhum resultado encontrado", // Message shown when there are no search results 
         info: "Exibindo {end} de {rows} registros" // 
-    }
+      }
     });
   }
 
-  listarAnotacoes(idUsuario:number){
+  listarAnotacoes(idUsuario: number) {
     this.nsrv.getAnotacaoByUser(idUsuario).subscribe(
-      (res: any) => this.observacoes = res);
+      (res: any) => {
+        this.observacoes = res;
+        this.observacoes.map(o => o.dataLocal = new Date(o.dataObservacao).toLocaleDateString('en-GB'))
+      });
   }
 }
