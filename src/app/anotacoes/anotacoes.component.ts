@@ -24,7 +24,6 @@ export class AnotacoesComponent implements OnInit {
   myTable!: any;
   dataTable !: any;
   
-
   constructor(
     public router: Router, 
     public srv: UsuarioService, 
