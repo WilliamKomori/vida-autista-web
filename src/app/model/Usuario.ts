@@ -13,4 +13,5 @@ export class Usuario{
     public documento_identificacao!: string;
     public jornadas!: Jornada[];
     public imagem!: string;
+    public dataLocal!: string;
 }

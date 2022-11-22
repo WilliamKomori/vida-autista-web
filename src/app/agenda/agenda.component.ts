@@ -103,7 +103,7 @@ export class AgendaComponent implements OnInit {
         for (var i = 0; i < len; i++) {
           eventos[i].remove();
         }
-        AgendaComponent.calendarApi.addEventSource({ events: e.map(e => ({ id: `${e.id}`, title: e.nome, start: e.dataHora })) });
+        AgendaComponent.calendarApi.addEventSource({ events: e.map(e => ({ id: `${e.idCalendario}`, title: e.nome, start: e.dataHoraEvento })) });
       });
   }
 
@@ -131,8 +131,8 @@ export class AgendaComponent implements OnInit {
     let valido = false;
 
     if (evento.idUsuario &&
-      evento.nome && evento.dataHora &&
-      evento.tipoEvento && evento.anotacao)
+      evento.nome && evento.dataHoraEvento &&
+      evento.tipoEvento && evento.anotacoes)
       valido = true;
 
     if (evento.idUsuario != AgendaComponent.usuario.idUsuario)
@@ -202,10 +202,10 @@ export class AgendaComponent implements OnInit {
       data.setHours(data.getHours() - 3, data.getMinutes());
 
       id.value = info.event.id;
-      inputData.value = evento.dataHora;
+      inputData.value = evento.dataHoraEvento;
       inputTitulo.value = evento.nome;
       inputTipoEvento.value = evento.tipoEvento;
-      inputAnotacao.value = evento.anotacao;
+      inputAnotacao.value = evento.anotacoes;
 
       AgendaComponent.podeExcluir = true;
 
@@ -228,7 +228,7 @@ export class AgendaComponent implements OnInit {
     }
 
     let calendarApi = AgendaComponent.calendarApi;
-    let id: any = (document.getElementById("id") as HTMLInputElement).value;
+    let id: any = parseInt((document.getElementById("id") as HTMLInputElement).value);
     let data: any = (document.getElementById("dataInicio") as HTMLInputElement).value;
     let titulo: any = (document.getElementById("titulo") as HTMLInputElement).value;
     let tipoEvento: any = (document.getElementById("tipoEvento") as HTMLInputElement).value;
@@ -239,12 +239,12 @@ export class AgendaComponent implements OnInit {
     let eventoCalendario = calendarApi.getEventById(id);
 
     let evento: Evento = {
-      id: id,
+      idCalendario: id,
       idUsuario: AgendaComponent.usuario.idUsuario,
       nome: titulo,
-      dataHora: data,
+      dataHoraEvento: data,
       tipoEvento: tipoEvento,
-      anotacao: anotacao
+      anotacoes: anotacao
     };
 
     if (eventoCalendario) {
@@ -258,8 +258,7 @@ export class AgendaComponent implements OnInit {
     } else {
       let eventoResponse = await this.criarEvento(evento);
       if (eventoResponse) {
-        console.log(eventoResponse);
-        calendarApi.addEvent({ 'id': eventoResponse.id, 'title': titulo, 'start': data });
+        calendarApi.addEvent({ 'id': eventoResponse.idCalendario, 'title': titulo, 'start': data });
       }
       else {
         this.exibirAlerta("Erro ao criar o evento.");

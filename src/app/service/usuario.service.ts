@@ -23,7 +23,7 @@ export class UsuarioService {
   }
 
   public atualiza(usuario: Usuario, id: number) {
-    return this.http.put("https://vida-autista-backend.herokuapp.com/alterar/" + id, usuario);
+    return this.http.put("https://vida-autista-backend.herokuapp.com/user/alterar/" + id, usuario);
   }
 
   public atualizaSenha(usuario: Usuario, id: number) {

@@ -1,8 +1,8 @@
 export class Evento {
-    public id!: number;
+    public idCalendario!: number;
     public idUsuario!: number;
     public nome!: string;
-    public dataHora!: Date;
+    public dataHoraEvento!: Date;
     public tipoEvento!: number;
-    public anotacao!: string;
+    public anotacoes!: string;
 }

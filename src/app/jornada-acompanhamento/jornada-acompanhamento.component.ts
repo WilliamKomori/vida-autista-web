@@ -117,9 +117,9 @@ export class JornadaAcompanhamentoComponent implements OnInit {
       res =>{
         this.toastr.success("Anotação Inserida com Sucesso!");
         this.cadastroForm.reset();
+        this.listarJornada(this.usuario.idUsuario);
       },
       err=>{
-        console.log(err);
         this.toastr.error("Erro ao inserir");
       }
     )
