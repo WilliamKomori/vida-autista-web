@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
     this.anotacoes.getAnotacaoByUser(this.usuario.idUsuario).subscribe(
       (res: any) => {
         this.RecebeAnotacoes = res;
-        this.RecebeAnotacoes.map((a: any) => a.dataLocal = new Date(a.dataObservacao).toLocaleDateString('en-GB'))
+        this.RecebeAnotacoes.map((a: any) => a.dataLocal = new Date(a.dataObservacao).toLocaleDateString('en-GB'));
       }
     );
   }
